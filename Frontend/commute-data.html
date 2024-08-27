@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - DRIVE2</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .day-row {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .day-row input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .time-fields, .arrive-fields {
+            margin-left: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .time-fields label, .arrive-fields label {
+            margin-bottom: 5px;
+        }
+        .time-fields input[type="time"], .arrive-fields input[type="time"] {
+            margin-bottom: 10px;
+        }
+        .inline-fields {
+            display: flex;
+            gap: 20px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWW9zve7B8Zy7HM2mHDtNz8HXED_HiFlg&libraries=places"></script>
+    <script>
+        function toggleTimeFields(day) {
+            var timeFields = document.getElementById(day + '-time-fields');
+            var checkbox = document.getElementById(day);
+
+            if (checkbox.checked) {
+                timeFields.style.display = 'block';
+            } else {
+                timeFields.style.display = 'none';
+            }
+        }
+
+        function initAutocomplete() {
+            var homeAddressInput = document.getElementById('home-address');
+            var officeAddressInput = document.getElementById('office-address');
+            
+            var homeAutocomplete = new google.maps.places.Autocomplete(homeAddressInput, {
+                types: ['address'],
+                componentRestrictions: { country: 'au' }
+            });
+
+            var officeAutocomplete = new google.maps.places.Autocomplete(officeAddressInput, {
+                types: ['address'],
+                componentRestrictions: { country: 'au' }
+            });
+
+            homeAutocomplete.addListener('place_changed', function() {
+                var place = homeAutocomplete.getPlace();
+                if (place.geometry) {
+                    console.log('Home address selected:', place.formatted_address);
+                }
+            });
+
+            officeAutocomplete.addListener('place_changed', function() {
+                var place = officeAutocomplete.getPlace();
+                if (place.geometry) {
+                    console.log('Office address selected:', place.formatted_address);
+                }
+            });
+        }
+
+        window.onload = initAutocomplete;
+    </script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <header>
+        <div class="topbar">
+            <div class="logo">
+                <a href="index.html"><img src="icons/Screenshot_2024-08-21_021632-removebg-preview.png" alt="DRIVE2 Logo"></a>
+            </div>
+            <nav>
+                <a href="vehicle.html"><button class="nav-button">Back</button></a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-step filled">1</div>
+        <div class="progress-step filled">2</div>
+        <div class="progress-step filled">3</div>
+        <div class="progress-step filled">4</div>
+        <div class="progress-step">5</div>
+        <div class="progress-text">Step 4 of 5</div>
+    </div>
+
+    <!-- Registration Form Section -->
+    <div class="registration-form">
+        <h1>Commute Information</h1>
+        <form action="credentials.html" method="POST">
+
+            <div class="form-group">
+                <label for="home-address">Enter the address of home location:</label>
+                <input type="text" id="home-address" name="home-address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="office-address">Enter the address of daily commute destination:</label>
+                <input type="text" id="office-address" name="office-address" required>
+            </div>
+
+            <div class="form-group">
+                <label>Which days are you traveling on this route?</label><br>
+                
+                <!-- Checkboxes for each day of the week -->
+                <div class="day-row">
+                    <input type="checkbox" id="monday" name="days[]" value="Monday" onchange="toggleTimeFields('monday')">
+                    <label for="monday">Monday</label>
+                </div>
+                <div id="monday-time-fields" class="time-fields" style="display:none;">
+                    <div class="inline-fields">
+                        <div>
+                            <label for="monday-leave-home">Time Leave Home:</label>
+                            <input type="time" id="monday-leave-home" name="monday-leave-home">
+                        </div>
+                        <div>
+                            <label for="monday-arrive-office">Time Arrive Office:</label>
+                            <input type="time" id="monday-arrive-office" name="monday-arrive-office">
+                        </div>
+                    </div>
+                    <div class="inline-fields">
+                        <div>
+                            <label for="monday-leave-office">Time Leave Office:</label>
+                            <input type="time" id="monday-leave-office" name="monday-leave-office">
+                        </div>
+                        <div>
+                            <label for="monday-arrive-home">Time Arrive Home:</label>
+                            <input type="time" id="monday-arrive-home" name="monday-arrive-home">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repeat for other days... -->
+
+                <div class="day-row">
+                    <input type="checkbox" id="tuesday" name="days[]" value="Tuesday" onchange="toggleTimeFields('tuesday')">
+                    <label for="tuesday">Tuesday</label>
+                </div>
+                <div id="tuesday-time-fields" class="time-fields" style="display:none;">
+                    <div class="inline-fields">
+                        <div>
+                            <label for="tuesday-leave-home">Time Leave Home:</label>
+                            <input type="time" id="tuesday-leave-home" name="tuesday-leave-home">
+                        </div>
+                        <div>
+                            <label for="tuesday-arrive-office">Time Arrive Office:</label>
+                            <input type="time" id="tuesday-arrive-office" name="tuesday-arrive-office">
+                        </div>
+                    </div>
+                    <div class="inline-fields">
+                        <div>
+                            <label for="tuesday-leave-office">Time Leave Office:</label>
+                            <input type="time" id="tuesday-leave-office" name="tuesday-leave-office">
+                        </div>
+                        <div>
+                            <label for="tuesday-arrive-home">Time Arrive Home:</label>
+                            <input type="time" id="tuesday-arrive-home" name="tuesday-arrive-home">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-row">
+                    <input type="checkbox" id="wednesday" name="days[]" value="Wednesday" onchange="toggleTimeFields('wednesday')">
+                    <label for="wednesday">Wednesday</label>
+                </div>
+                <div id="wednesday-time-fields" class="time-fields" style="display:none;">
+                    <div class="inline-fields">
+                        <div>
+                            <label for="wednesday-leave-home">Time Leave Home:</label>
+                            <input type="time" id="wednesday-leave-home" name="wednesday-leave-home">
+                        </div>
+                        <div>
+                            <label for="wednesday-arrive-office">Time Arrive Office:</label>
+                            <input type="time" id="wednesday-arrive-office" name="wednesday-arrive-office">
+                        </div>
+                    </div>
+                    <div class="inline-fields">
+                        <div>
+                            <label for="wednesday-leave-office">Time Leave Office:</label>
+                            <input type="time" id="wednesday-leave-office" name="wednesday-leave-office">
+                        </div>
+                        <div>
+                            <label for="wednesday-arrive-home">Time Arrive Home:</label>
+                            <input type="time" id="wednesday-arrive-home" name="wednesday-arrive-home">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-row">
+                    <input type="checkbox" id="thursday" name="days[]" value="Thursday" onchange="toggleTimeFields('thursday')">
+                    <label for="thursday">Thursday</label>
+                </div>
+                <div id="thursday-time-fields" class="time-fields" style="display:none;">
+                    <div class="inline-fields">
+                        <div>
+                            <label for="thursday-leave-home">Time Leave Home:</label>
+                            <input type="time" id="thursday-leave-home" name="thursday-leave-home">
+                        </div>
+                        <div>
+                            <label for="thursday-arrive-office">Time Arrive Office:</label>
+                            <input type="time" id="thursday-arrive-office" name="thursday-arrive-office">
+                        </div>
+                    </div>
+                    <div class="inline-fields">
+                        <div>
+                            <label for="thursday-leave-office">Time Leave Office:</label>
+                            <input type="time" id="thursday-leave-office" name="thursday-leave-office">
+                        </div>
+                        <div>
+                            <label for="thursday-arrive-home">Time Arrive Home:</label>
+                            <input type="time" id="thursday-arrive-home" name="thursday-arrive-home">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-row">
+                    <input type="checkbox" id="friday" name="days[]" value="Friday" onchange="toggleTimeFields('friday')">
+                    <label for="friday">Friday</label>
+                </div>
+                <div id="friday-time-fields" class="time-fields" style="display:none;">
+                    <div class="inline-fields">
+                        <div>
+                            <label for="friday-leave-home">Time Leave Home:</label>
+                            <input type="time" id="friday-leave-home" name="friday-leave-home">
+                        </div>
+                        <div>
+                            <label for="friday-arrive-office">Time Arrive Office:</label>
+                            <input type="time" id="friday-arrive-office" name="friday-arrive-office">
+                        </div>
+                    </div>
+                    <div class="inline-fields">
+                        <div>
+                            <label for="friday-leave-office">Time Leave Office:</label>
+                            <input type="time" id="friday-leave-office" name="friday-leave-office">
+                        </div>
+                        <div>
+                            <label for="friday-arrive-home">Time Arrive Home:</label>
+                            <input type="time" id="friday-arrive-home" name="friday-arrive-home">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-row">
+                    <input type="checkbox" id="saturday" name="days[]" value="Saturday" onchange="toggleTimeFields('saturday')">
+                    <label for="saturday">Saturday</label>
+                </div>
+                <div id="saturday-time-fields" class="time-fields" style="display:none;">
+                    <div class="inline-fields">
+                        <div>
+                            <label for="saturday-leave-home">Time Leave Home:</label>
+                            <input type="time" id="saturday-leave-home" name="saturday-leave-home">
+                        </div>
+                        <div>
+                            <label for="saturday-arrive-office">Time Arrive Office:</label>
+                            <input type="time" id="saturday-arrive-office" name="saturday-arrive-office">
+                        </div>
+                    </div>
+                    <div class="inline-fields">
+                        <div>
+                            <label for="saturday-leave-office">Time Leave Office:</label>
+                            <input type="time" id="saturday-leave-office" name="saturday-leave-office">
+                        </div>
+                        <div>
+                            <label for="saturday-arrive-home">Time Arrive Home:</label>
+                            <input type="time" id="saturday-arrive-home" name="saturday-arrive-home">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-row">
+                    <input type="checkbox" id="sunday" name="days[]" value="Sunday" onchange="toggleTimeFields('sunday')">
+                    <label for="sunday">Sunday</label>
+                </div>
+                <div id="sunday-time-fields" class="time-fields" style="display:none;">
+                    <div class="inline-fields">
+                        <div>
+                            <label for="sunday-leave-home">Time Leave Home:</label>
+                            <input type="time" id="sunday-leave-home" name="sunday-leave-home">
+                        </div>
+                        <div>
+                            <label for="sunday-arrive-office">Time Arrive Office:</label>
+                            <input type="time" id="sunday-arrive-office" name="sunday-arrive-office">
+                        </div>
+                    </div>
+                    <div class="inline-fields">
+                        <div>
+                            <label for="sunday-leave-office">Time Leave Office:</label>
+                            <input type="time" id="sunday-leave-office" name="sunday-leave-office">
+                        </div>
+                        <div>
+                            <label for="sunday-arrive-home">Time Arrive Home:</label>
+                            <input type="time" id="sunday-arrive-home" name="sunday-arrive-home">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="percentage-mileage">% approximate of weekly travel mileage due to regular commute:</label>
+                <input type="text" id="percentage-mileage" name="percentage-mileage" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fuel-cost">$ approximate spent on fuel weekly:</label>
+                <input type="text" id="fuel-cost" name="fuel-cost" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Continue to Next Step</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 DRIVE2. All rights reserved.</p>
+    </footer>
+</body>
+</html>

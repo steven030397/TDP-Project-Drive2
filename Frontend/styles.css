@@ -79,7 +79,6 @@ nav {
     background: #444;
     margin: 0 5px;
     position: relative;
-    cursor: pointer;
     transition: background 0.3s, border-color 0.3s, transform 0.3s;
 }
 
@@ -422,4 +421,5 @@ button:hover {
         font-size: 0.8em;
         padding: 8px 16px;
     }
+    
 }
