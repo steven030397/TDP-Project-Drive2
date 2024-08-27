@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent Form - DRIVE2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header>
+        <div class="topbar">
+            <div class="logo">
+                <a href="index.html"><img src="icons/Screenshot_2024-08-21_021632-removebg-preview.png" alt="DRIVE2 Logo"></a> <!-- Replace with your logo -->
+            </div>
+            <nav>
+                <a href="index.html"><button class="nav-button">Back</button></a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-step filled" data-page="consent.html">1</div>
+        <div class="progress-step" data-page="register.html">2</div>
+        <div class="progress-step" data-page="vehicle.html">3</div>
+        <div class="progress-step" data-page="additional.html">4</div>
+        <div class="progress-step" data-page="finish.html">5</div>
+        <div class="progress-text">Step 1 of 5</div>
+    </div>
+
+    <!-- Consent Form Section -->
+    <div class="consent-form">
+        <h1>Consent Form</h1>
+        <form action="register.html" method="POST">
+            <p>By registering, you agree to our terms and conditions. Please read and accept the consent form below.</p>
+            
+            <div class="scrollable-box">
+                <h2>Consent Article</h2>
+                <p>
+                    Welcome to DRIVE2. This consent form outlines the terms and conditions of using our carpooling service. Please read the following information carefully. 
+                </p>
+                <p>
+                    <strong>1. Introduction</strong><br>
+                    DRIVE2 is a platform that provides an innovative solution for carpooling. By registering with DRIVE2, you agree to comply with the following terms and conditions. These terms apply to all users of the platform, including drivers and passengers.
+                </p>
+                <p>
+                    <strong>2. User Responsibilities</strong><br>
+                    As a user of DRIVE2, you are responsible for ensuring that the information you provide is accurate and up-to-date. You must use the platform in accordance with all applicable laws and regulations. DRIVE2 reserves the right to suspend or terminate accounts that violate these terms.
+                </p>
+                <p>
+                    <strong>3. Privacy and Data Protection</strong><br>
+                    Your privacy is important to us. We collect and process personal data as described in our Privacy Policy. By using our platform, you consent to the collection, use, and sharing of your personal information as outlined in the Privacy Policy.
+                </p>
+                <p>
+                    <strong>4. Safety and Conduct</strong><br>
+                    Users are expected to conduct themselves in a respectful and safe manner. Any form of harassment, discrimination, or unsafe behavior is strictly prohibited. DRIVE2 may take action against users who engage in such behavior, including account suspension or termination.
+                </p>
+                <p>
+                    <strong>5. Service Availability</strong><br>
+                    DRIVE2 strives to provide a reliable and efficient service. However, we do not guarantee that the service will be available at all times or without interruptions. We are not responsible for any disruptions or issues that may arise during the use of the platform.
+                </p>
+                <p>
+                    <strong>6. Changes to Terms</strong><br>
+                    DRIVE2 reserves the right to modify these terms and conditions at any time. Any changes will be posted on our website, and it is your responsibility to review the terms regularly. Continued use of the platform after changes are made constitutes your acceptance of the revised terms.
+                </p>
+                <p>
+                    <strong>7. Limitation of Liability</strong><br>
+                    DRIVE2 is not liable for any indirect, incidental, or consequential damages arising from the use of the platform. Our liability is limited to the maximum extent permitted by law.
+                </p>
+                <p>
+                    <strong>8. Governing Law</strong><br>
+                    These terms and conditions are governed by the laws of [Your Jurisdiction]. Any disputes arising from the use of the platform will be resolved in accordance with these laws.
+                </p>
+                <p>
+                    <strong>9. Contact Information</strong><br>
+                    If you have any questions or concerns about this consent form or the terms and conditions, please contact us at [Your Contact Information].
+                </p>
+                <p>
+                    Thank you for reading and understanding our terms. By agreeing to this consent form, you acknowledge that you have read and accepted the terms and conditions of DRIVE2.
+                </p>
+            </div>
+            
+            <div class="form-group">
+                <label for="consent">I agree to the terms and conditions:</label>
+                <input type="checkbox" id="consent" name="consent" required>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit">Continue to Registration</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 DRIVE2. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.progress-step').forEach(step => {
+            step.addEventListener('click', function() {
+                const page = this.getAttribute('data-page');
+                window.location.href = page;
+            });
+        });
+    </script>
+</body>
+</html>

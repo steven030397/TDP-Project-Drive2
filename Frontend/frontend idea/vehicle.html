@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Details - DRIVE2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header>
+        <div class="topbar">
+            <div class="logo">
+                <a href="index.html"><img src="icons/Screenshot_2024-08-21_021632-removebg-preview.png" alt="DRIVE2 Logo"></a> <!-- Replace with your logo -->
+            </div>
+            <nav>
+                <a href="consent.html"><button class="nav-button">Back</button></a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-step filled" data-page="consent.html">1</div>
+        <div class="progress-step filled" data-page="register.html">2</div>
+        <div class="progress-step filled" data-page="vehicle.html">3</div>
+        <div class="progress-step" data-page="additional.html">4</div>
+        <div class="progress-step" data-page="finish.html">5</div>
+        <div class="progress-text">Step 3 of 5</div>
+    </div>
+
+    <!-- Vehicle Details Form -->
+    <div class="form-container">
+        <h1>Vehicle Details</h1>
+        <form id="vehicle-form" action="next-step.html" method="POST">
+            <div class="form-group">
+                <label>Do you have a car?</label>
+                <input type="radio" id="car-yes" name="hasCar" value="yes">
+                <label for="car-yes">Yes</label>
+                <input type="radio" id="car-no" name="hasCar" value="no" checked>
+                <label for="car-no">No</label>
+            </div>
+
+            <div id="car-details" style="display: none;">
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <select id="brand" name="brand">
+                        <option value="">Select Brand</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Ford">Ford</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Audi">Audi</option>
+                        <!-- Add more brands as needed -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <input type="text" id="model" name="model">
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <select id="year" name="year">
+                        <option value="">Select Year</option>
+                        <!-- Options will be populated dynamically in JavaScript -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="registration">Registration No:</label>
+                    <input type="text" id="registration" name="registration">
+                </div>
+
+                <div class="form-group">
+                    <label for="garage-location">Garage Location:</label>
+                    <input type="text" id="garage-location" name="garage-location" placeholder="Enter your garage location">
+                </div>
+
+                <div id="additional-vehicles"></div>
+
+                <button type="button" id="add-vehicle">Add Vehicle</button>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Continue to Next Step</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 DRIVE2. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate year options for dropdowns
+            populateYearOptions();
+
+            // Handle the initial display state of car details based on the default "No" selection
+            const carYes = document.getElementById('car-yes');
+            const carNo = document.getElementById('car-no');
+            const carDetails = document.getElementById('car-details');
+
+            function toggleCarDetails() {
+                carDetails.style.display = carYes.checked ? 'block' : 'none';
+            }
+
+            carYes.addEventListener('change', toggleCarDetails);
+            carNo.addEventListener('change', toggleCarDetails);
+
+            // Set the initial state based on the default checked radio button
+            toggleCarDetails();
+        });
+
+        function populateYearOptions() {
+            const yearSelects = document.querySelectorAll('select[name="year"]');
+            const currentYear = new Date().getFullYear();
+            for (let i = currentYear; i >= 1950; i--) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                yearSelects.forEach(select => select.appendChild(option.cloneNode(true)));
+            }
+        }
+
+        document.getElementById('add-vehicle').addEventListener('click', function() {
+            const additionalVehicles = document.getElementById('additional-vehicles');
+            const vehicleForm = document.createElement('div');
+            vehicleForm.innerHTML = `
+                <h3>Additional Vehicle</h3>
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <select name="brand">
+                        <option value="">Select Brand</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Ford">Ford</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Audi">Audi</option>
+                        <!-- Add more brands as needed -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <input type="text" name="model">
+                </div>
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <select name="year">
+                        <option value="">Select Year</option>
+                        <!-- Options will be populated dynamically in JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="registration">Registration No:</label>
+                    <input type="text" name="registration">
+                </div>
+                <div class="form-group">
+                    <label for="garage-location">Garage Location:</label>
+                    <input type="text" name="garage-location" placeholder="Enter your garage location">
+                </div>
+            `;
+            additionalVehicles.appendChild(vehicleForm);
+            populateYearOptions();
+        });
+    </script>
+</body>
+</html>
