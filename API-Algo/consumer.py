@@ -18,8 +18,7 @@ if __name__ == '__main__':
         queue = PGMQueue(host=host, port=port, username=username, password=password, database=database)
         print("Queue initialized successfully")
 
-        # Uncomment the next line if you want to drop the queue before creating it
-        # queue.drop_queue(test_queue)
+        # queue.drop_queue(test_queue) #for dropping queue
         queue.create_queue(test_queue)
         print("Queue created successfully")
 
