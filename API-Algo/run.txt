@@ -2,4 +2,4 @@ docker run -d --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 quay.io
 
 pip install tembo-pgmq-python
 
-sh ./run_test.sh
+sh ./run.sh
