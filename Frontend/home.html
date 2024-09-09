@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - DRIVE2</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
         /* Navigation Pane Styles */
         .navi-pane {
@@ -66,20 +66,20 @@
     <header>
         <div class="topbar">
             <div class="logo">
-                <a href="home.html"><img src="icons/Screenshot_2024-08-21_021632-removebg-preview.png" alt="DRIVE2 Logo"></a>
+                <a href="{{ url_for('home') }}"><img src={{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png) }} alt="DRIVE2 Logo"></a>
             </div>
             <nav>
-                <a href="index.html"><button class="nav-button">Log Out</button></a>
+                <a href="{{ url_for('index') }}"><button class="nav-button">Log Out</button></a>
             </nav>
         </div>
     </header>
 
     <!-- Navigation Pane -->
     <div class="navi-pane">
-        <a href="home.html" class="selected">Home</a>
-        <a href="conversation.html">Conversation</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="settings.html">Settings</a>
+        <a href="{{ url_for('home') }}" class="selected">Home</a>
+        <a href="{{ url_for('conversation') }}">Conversation</a>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('settings') }}">Settings</a>
     </div>
 
     <!-- Main Content -->
