@@ -118,19 +118,19 @@ nav {
 }
 
 #section1 {
-    background-image: url('images/istockphoto-1166777293-170667a.webp');
+    background-image: url('static/images/istockphoto-1166777293-170667a.webp');
 }
 
 #section2 {
-    background-image: url('images/960x0.webp');
+    background-image: url('static/images/960x0.webp');
 }
 
 #section3 {
-    background-image: url('images/Untitled.jpg');
+    background-image: url('static/images/Untitled.jpg');
 }
 
 #section4 {
-    background-image: url('images/Untitled-fuel.jpg');
+    background-image: url('static/images/Untitled-fuel.jpg');
 }
 
 .text-overlay {
