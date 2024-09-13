@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='icons/favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon/favicon-16x16.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration - DRIVE2</title>
@@ -31,7 +34,7 @@
     <header>
         <div class="topbar">
             <div class="logo">
-                <a href="{{ url_for('index') }}"><img src={{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png) }} alt="DRIVE2 Logo"></a> <!-- Replace with your logo -->
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png') }}" alt="DRIVE2 Logo"></a> <!-- Replace with your logo -->
             </div>
             <nav>
                 <a href="{{ url_for('consent') }}"><button class="nav-button">Back</button></a>
@@ -49,10 +52,21 @@
         <div class="progress-text">Step 2 of 5</div>
     </div>
 
+    <!-- Flash message section -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
     <!-- Registration Form Section -->
     <div class="registration-form">
         <h1>Personal Details</h1>
-        <form action="{{ url_for('vehicle') }}" method="POST">
+        <form action="{{ url_for('register') }}" method="POST">
             <div class="form-group">
                 <label for="first-name">First Name:</label>
                 <input type="text" id="first-name" name="first-name" required>

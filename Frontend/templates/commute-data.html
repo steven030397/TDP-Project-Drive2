@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='icons/favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon/favicon-16x16.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration - DRIVE2</title>
@@ -30,7 +33,32 @@
         .inline-fields {
             display: flex;
             gap: 20px;
+        }         
+        .map-details-container {
+            display: flex;
+            margin-bottom: 20px;
         }
+        
+        #map {
+            width: 60%;
+            height: 300px;
+            margin-right: 20px;
+        }
+        
+        #details-box {
+            width: 35%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #000000;
+        }
+        
+        #details-box h3 {
+            margin-top: 0;
+        }
+        
+        #details-box p {
+            margin: 5px 0;
+        }       
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWW9zve7B8Zy7HM2mHDtNz8HXED_HiFlg&libraries=places"></script>
     <script>
@@ -46,35 +74,73 @@
         }
 
         function initAutocomplete() {
-            var homeAddressInput = document.getElementById('home-address');
-            var officeAddressInput = document.getElementById('office-address');
-            
-            var homeAutocomplete = new google.maps.places.Autocomplete(homeAddressInput, {
-                types: ['address'],
-                componentRestrictions: { country: 'au' }
-            });
+    var homeAddressInput = document.getElementById('home-address');
+    var officeAddressInput = document.getElementById('office-address');
 
-            var officeAutocomplete = new google.maps.places.Autocomplete(officeAddressInput, {
-                types: ['address'],
-                componentRestrictions: { country: 'au' }
-            });
+    var homeAutocomplete = new google.maps.places.Autocomplete(homeAddressInput, {
+        types: ['address'],
+        componentRestrictions: { country: 'au' }
+    });
 
-            homeAutocomplete.addListener('place_changed', function() {
-                var place = homeAutocomplete.getPlace();
-                if (place.geometry) {
-                    console.log('Home address selected:', place.formatted_address);
-                }
-            });
+    var officeAutocomplete = new google.maps.places.Autocomplete(officeAddressInput, {
+        types: ['address'],
+        componentRestrictions: { country: 'au' }
+    });
 
-            officeAutocomplete.addListener('place_changed', function() {
-                var place = officeAutocomplete.getPlace();
-                if (place.geometry) {
-                    console.log('Office address selected:', place.formatted_address);
-                }
-            });
+    // Initialize map
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+    });
+
+    var directionsService = new google.maps.DirectionsService();
+    var directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+
+    homeAutocomplete.addListener('place_changed', function() {
+        var homePlace = homeAutocomplete.getPlace();
+        if (homePlace.geometry) {
+            calculateAndDisplayRoute(directionsService, directionsRenderer);
         }
+    });
 
-        window.onload = initAutocomplete;
+    officeAutocomplete.addListener('place_changed', function() {
+        var officePlace = officeAutocomplete.getPlace();
+        if (officePlace.geometry) {
+            calculateAndDisplayRoute(directionsService, directionsRenderer);
+        }
+    });
+
+    function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+        var homePlace = homeAutocomplete.getPlace();
+        var officePlace = officeAutocomplete.getPlace();
+
+        if (homePlace && officePlace && homePlace.geometry && officePlace.geometry) {
+            directionsService.route(
+                {
+                    origin: homePlace.geometry.location,
+                    destination: officePlace.geometry.location,
+                    travelMode: google.maps.TravelMode.DRIVING
+                },
+                function(response, status) {
+                    if (status === 'OK') {
+                        directionsRenderer.setDirections(response);
+
+                        // Extract and display route details
+                        var route = response.routes[0].legs[0];
+                        document.getElementById('distance').textContent = 'Distance: ' + route.distance.text;
+                        document.getElementById('duration').textContent = 'Estimated Duration: ' + route.duration.text;
+                    } else {
+                        window.alert('Directions request failed due to ' + status);
+                    }
+                }
+            );
+        }
+    }
+}
+
+window.onload = initAutocomplete;
+
     </script>
 </head>
 <body>
@@ -82,7 +148,7 @@
     <header>
         <div class="topbar">
             <div class="logo">
-                <a href="{{ url_for('index') }}"><img src={{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png) }} alt="DRIVE2 Logo"></a>
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png') }}" alt="DRIVE2 Logo"></a>
             </div>
             <nav>
                 <a href="{{ url_for('vehicle') }}"><button class="nav-button">Back</button></a>
@@ -103,6 +169,21 @@
     <!-- Registration Form Section -->
     <div class="registration-form">
         <h1>Commute Information</h1>
+
+        <!-- Map and Details Container -->
+        <div class="map-details-container">
+            <!-- Google Map -->
+            <div id="map"></div>
+
+            <!-- Details Box -->
+            <div id="details-box">
+                <h3>Route Details</h3>
+                <p id="distance">Distance: </p>
+                <p id="duration">Estimated Duration: </p>
+                <!-- Add any other details you want to show -->
+            </div>
+        </div>
+
         <form action="{{ url_for('credentials') }}" method="POST">
 
             <div class="form-group">

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='icons/favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon/favicon-16x16.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vehicle Details - DRIVE2</title>
@@ -11,7 +14,7 @@
     <header>
         <div class="topbar">
             <div class="logo">
-                <a href="{{ url_for('index') }}"><img src={{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png) }} alt="DRIVE2 Logo"></a> <!-- Replace with your logo -->
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png') }}" alt="DRIVE2 Logo"></a> <!-- Replace with your logo -->
             </div>
             <nav>
                 <a href="{{ url_for('register') }}"><button class="nav-button">Back</button></a>
@@ -32,7 +35,7 @@
     <!-- Vehicle Details Form -->
     <div class="form-container">
         <h1>Vehicle Details</h1>
-        <form id="vehicle-form" action="{{ url_for('commute-data') }}" method="POST">
+        <form id="vehicle-form" action="{{ url_for('commute_data') }}" method="POST">
             <div class="form-group">
                 <label>Do you have a car?</label>
                 <input type="radio" id="car-yes" name="hasCar" value="yes">
