@@ -72,7 +72,7 @@
                 <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png') }}" alt="DRIVE2 Logo"></a>
             </div>
             <nav>
-                <a href="{{ url_for('index') }}"><button class="nav-button">Log Out</button></a>
+                <a href="{{ url_for('logout') }}"><button class="nav-button">Log Out</button></a>
             </nav>
         </div>
     </header>
@@ -88,6 +88,13 @@
     <!-- Main Content -->
     <div class="main-content">
         <div class="welcome-message">Welcome to DRIVE2!</div>
+
+        {% if session['first_name'] %}
+            <p>Hello, {{ session['first_name'] }} {{ session['middle_name'] }} {{ session['last_name'] }}!</p>
+        {% else %}
+            <p>Hello, Guest!</p>
+        {% endif %}
+
         <div class="card">
             <h2>Matches</h2>
             <p class="no-match-msg">There are no matches at the moment.</p>

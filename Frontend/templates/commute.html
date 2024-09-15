@@ -9,31 +9,6 @@
     <title>Registration - DRIVE2</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .day-row {
-            display: block;
-            margin-bottom: 10px;
-        }
-        .day-row input[type="checkbox"] {
-            margin-right: 10px;
-        }
-        .time-fields, .arrive-fields {
-            margin-left: 30px;
-            display: flex;
-            flex-direction: column;
-        }
-        .time-fields label, .arrive-fields label {
-            margin-bottom: 5px;
-        }
-        .time-fields input[type="time"], .arrive-fields input[type="time"] {
-            margin-bottom: 10px;
-        }
-        .inline-fields {
-            display: flex;
-            gap: 20px;
-        }         
         .map-details-container {
             display: flex;
             margin-bottom: 20px;
@@ -99,6 +74,8 @@
 
     homeAutocomplete.addListener('place_changed', function() {
         var homePlace = homeAutocomplete.getPlace();
+        document.getElementById('lat1').value = homePlace.geometry.location.lat();
+        document.getElementById('lng1').value = homePlace.geometry.location.lng();
         if (homePlace.geometry) {
             calculateAndDisplayRoute(directionsService, directionsRenderer);
         }
@@ -106,6 +83,8 @@
 
     officeAutocomplete.addListener('place_changed', function() {
         var officePlace = officeAutocomplete.getPlace();
+        document.getElementById('lat2').value = officePlace.geometry.location.lat();
+        document.getElementById('lng2').value = officePlace.geometry.location.lng();
         if (officePlace.geometry) {
             calculateAndDisplayRoute(directionsService, directionsRenderer);
         }
@@ -166,6 +145,17 @@ window.onload = initAutocomplete;
         <div class="progress-text">Step 4 of 5</div>
     </div>
 
+    <!-- Flash message section -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     <!-- Registration Form Section -->
     <div class="registration-form">
         <h1>Commute Information</h1>
@@ -184,19 +174,23 @@ window.onload = initAutocomplete;
             </div>
         </div>
 
-        <form action="{{ url_for('credentials') }}" method="POST">
+        <form action="{{ url_for('commute') }}" method="POST">
 
             <div class="form-group">
                 <label for="home-address">Enter the address of home location:</label>
                 <input type="text" id="home-address" name="home-address" required>
+                <input id="lat1" type="text" name="lat1" placeholder="Latitude 1" readonly />
+                <input id="lng1" type="text" name="lng1" placeholder="Longitude 1" readonly />
             </div>
 
             <div class="form-group">
                 <label for="office-address">Enter the address of daily commute destination:</label>
                 <input type="text" id="office-address" name="office-address" required>
+                <input id="lat2" type="text" name="lat2" placeholder="Latitude 2" readonly />
+                <input id="lng2" type="text" name="lng2" placeholder="Longitude 2" readonly />
             </div>
 
-            <div class="form-group">
+            <div class="form-group-days">
                 <label>Which days are you traveling on this route?</label><br>
                 
                 <!-- Checkboxes for each day of the week -->
@@ -392,17 +386,23 @@ window.onload = initAutocomplete;
                 </div>
 
             </div>
-
+            
             <div class="form-group">
-                <label for="percentage-mileage">% approximate of weekly travel mileage due to regular commute:</label>
-                <input type="text" id="percentage-mileage" name="percentage-mileage" required>
+                <label for="weekly-mileage">Percentage of weekly travel mileage due to regular commute:</label>
+                <div style="display: flex; align-items: center;">
+                    <input type="text" id="weekly-mileage" name="weekly-mileage" required style="width: 80px; padding-right: 30px; text-align: right;">
+                    <span style="position: relative; left: -25px; color: #333;">%</span>
+                </div>
             </div>
-
+            
             <div class="form-group">
-                <label for="fuel-cost">$ approximate spent on fuel weekly:</label>
-                <input type="text" id="fuel-cost" name="fuel-cost" required>
+                <label for="weekly-fuel-cost">Approximate amount spent on fuel weekly:</label>
+                <div style="display: flex; align-items: center;">
+                    <span style="position: relative; right: -25px; color: #333;">$</span>
+                    <input type="text" id="weekly-fuel-cost" name="weekly-fuel-cost" required style="width: 80px; padding-left: 30px; text-align: right;">
+                </div>
             </div>
-
+            
             <div class="form-group">
                 <button type="submit">Continue to Next Step</button>
             </div>
