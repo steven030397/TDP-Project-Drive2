@@ -3,12 +3,12 @@ import mysql.connector
 from werkzeug.security import generate_password_hash, check_password_hash
 
 # replace with non-local database Postgresql
-connection = mysql.connector.connect( 
-    host = "127.0.0.1",
+connection = mysql.connector.connect(
+    host = "db4free.net",
     port="3306",
-    user="root",
-    password = "", 
-    database="tdp-testing")
+    user="steven3397",
+    password = "pass123word", 
+    database="drive2_db")
 
 
 my_cursor=connection.cursor()
@@ -42,11 +42,11 @@ def login():
 
         # Connect to MySQL Database
         conn = mysql.connector.connect(
-            host = "127.0.0.1",
+            host = "db4free.net",
             port="3306",
-            user="root",
-            password = "", 
-            database="tdp-testing")
+            user="steven3397",
+            password = "pass123word", 
+            database="drive2_db")
         cursor = conn.cursor()
 
         # Check if the user exists in the database by email
@@ -63,7 +63,7 @@ def login():
                 session['email'] = email
                 flash('Logged in successfully!')
 
-                cursor.execute("SELECT first_name, middle_name, last_name FROM user_personal_details WHERE user_id = %s", (user_id,))
+                cursor.execute("SELECT first_name, middle_name, last_name FROM users WHERE user_id = %s", (user_id,))
                 names = cursor.fetchone()
                 first_name, middle_name, last_name = names
                 session['first_name'] = first_name
@@ -264,12 +264,11 @@ def credentials():
         try:
             # Connect to MySQL Database
             connection = mysql.connector.connect(
-                host="127.0.0.1",
+                host = "db4free.net",
                 port="3306",
-                user="root",
-                password="", 
-                database="tdp-testing"
-            )
+                user="steven3397",
+                password = "pass123word", 
+                database="drive2_db")
             cursor = connection.cursor()
             connection.start_transaction()
 
@@ -331,7 +330,7 @@ def credentials():
             # Insert route data for each day (one row per day)
             for day, times in days_data.items():
                 cursor.execute("""
-                    INSERT INTO route_id (user_id, start_latitude, start_longitude, start_point_name, end_latitude, end_longitude, end_point_name, leave_start_time, arrive_end_time, leave_end_time, arrive_start_time, travel_day, weekly_mileage_percentage, weekly_fuel_spent)
+                    INSERT INTO route (user_id, start_latitude, start_longitude, start_point_name, end_latitude, end_longitude, end_point_name, leave_start_time, arrive_end_time, leave_end_time, arrive_start_time, travel_day, weekly_mileage_percentage, weekly_fuel_spent)
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """, (
                     new_user_id, session['home_lat'], session['home_long'], session['home_address'], session['office_lat'], session['office_long'],
