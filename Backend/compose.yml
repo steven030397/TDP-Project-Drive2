@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+ postgres:
+   image: postgres:latest
+   container_name: postgres
+   evironmeny:
+    postgres_DB: Drive2_db
+    postgres_User: myuser
+    postgres_Password: Drive2
+   volumes:
+    - postgres_data:/Master Course\semester 2 2024\COS60011 Technology Design Project\New folder\TDP-Project-Drive2
+   ports:
+   - "5432:5432"
+   restart: unless-stopped
+
+pgadmin:
+ postgres:
+   image: dpage/pqadmin4:latest
+   container_name: pqadmin
+   evironmeny:
+    pgadmin_default_email: admin@admin.com
+    pgadmin_default_password: admin
+    ports:
+   - "5050:80"
+   depends_on:
+    - postgres
+   restart: unless-stopped
+ 
+volumes:
+  postgres_data:

@@ -1,0 +1,10 @@
+docker run -d --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 quay.io/tembo/pgmq-pg:latest
+
+pip install tembo-pgmq-python
+
+sh ./run.sh
+
+docker run -p 80:80 \
+    -e 'PGADMIN_DEFAULT_EMAIL=umer@2013.com' \
+    -e 'PGADMIN_DEFAULT_PASSWORD=umer2013' \
+    -d dpage/pgadmin4

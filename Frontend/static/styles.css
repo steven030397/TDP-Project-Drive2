@@ -79,7 +79,6 @@ nav {
     background: #444;
     margin: 0 5px;
     position: relative;
-    cursor: pointer;
     transition: background 0.3s, border-color 0.3s, transform 0.3s;
 }
 
@@ -119,19 +118,19 @@ nav {
 }
 
 #section1 {
-    background-image: url('images/istockphoto-1166777293-170667a.webp');
+    background-image: url('static/images/istockphoto-1166777293-170667a.webp');
 }
 
 #section2 {
-    background-image: url('images/960x0.webp');
+    background-image: url('static/images/960x0.webp');
 }
 
 #section3 {
-    background-image: url('images/Untitled.jpg');
+    background-image: url('static/images/Untitled.jpg');
 }
 
 #section4 {
-    background-image: url('images/Untitled-fuel.jpg');
+    background-image: url('static/images/Untitled-fuel.jpg');
 }
 
 .text-overlay {
@@ -422,4 +421,5 @@ button:hover {
         font-size: 0.8em;
         padding: 8px 16px;
     }
+    
 }
