@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='icons/favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon/favicon-16x16.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consent Form - DRIVE2</title>
@@ -11,7 +14,7 @@
     <header>
         <div class="topbar">
             <div class="logo">
-                <a href="{{ url_for('index') }}"><img src={{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png) }} alt="DRIVE2 Logo"></a> <!-- Replace with your logo -->
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png') }}" alt="DRIVE2 Logo"></a> 
             </div>
             <nav>
                 <a href="{{ url_for('index') }}"><button class="nav-button">Back</button></a>
@@ -32,7 +35,7 @@
     <!-- Consent Form Section -->
     <div class="consent-form">
         <h1>Consent Form</h1>
-        <form action="{{ url_for('register') }}" method="POST">
+        <form action="{{ url_for('consent') }}" method="POST">
             <p>By registering, you agree to our terms and conditions. Please read and accept the consent form below.</p>
             
             <div class="scrollable-box">
@@ -81,7 +84,7 @@
                 </p>
             </div>
             
-            <div class="form-group">
+            <div class="form-group-consent">
                 <label for="consent">I agree to the terms and conditions:</label>
                 <input type="checkbox" id="consent" name="consent" required>
             </div>

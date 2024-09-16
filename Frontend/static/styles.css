@@ -52,22 +52,24 @@ nav {
 }
 
 /* Progress Bar Styles */
+/* Progress Bar Styles */
 .progress-bar {
     display: flex;
     align-items: center;
     justify-content: center;
     background: #333;
     padding: 10px;
-    margin: 0;
+    margin: 80px 0px;
     border-radius: 5px;
-    position: relative;
     width: 100%;
-    max-width: 1200px;
-    margin: 80px auto 20px; /* Adjust top margin to account for fixed header */
+    flex-wrap: nowrap;  /* Prevent wrapping */
+    overflow-x: auto; /* Allows scrolling on small screens */
+    white-space: nowrap; /* Prevents elements from wrapping into the next line */
 }
 
 .progress-step {
-    width: 40px;
+    flex-shrink: 0; /* Prevent shrinking */
+    min-width: 40px; /* Ensure minimum width */
     height: 40px;
     border: 2px solid #fff;
     border-radius: 50%;
@@ -77,10 +79,15 @@ nav {
     color: #fff;
     font-size: 1em;
     background: #444;
-    margin: 0 5px;
+    margin: 5px 5px;
     position: relative;
     transition: background 0.3s, border-color 0.3s, transform 0.3s;
 }
+
+
+
+
+
 
 .progress-step.filled {
     background: #ff5733;
@@ -118,19 +125,19 @@ nav {
 }
 
 #section1 {
-    background-image: url('static/images/istockphoto-1166777293-170667a.webp');
+    background-image: url('images/istockphoto-1166777293-170667a.webp');
 }
 
 #section2 {
-    background-image: url('static/images/960x0.webp');
+    background-image: url('images/960x0.webp');
 }
 
 #section3 {
-    background-image: url('static/images/Untitled.jpg');
+    background-image: url('images/Untitled.jpg');
 }
 
 #section4 {
-    background-image: url('static/images/Untitled-fuel.jpg');
+    background-image: url('images/Untitled-fuel.jpg');
 }
 
 .text-overlay {
@@ -177,18 +184,21 @@ nav {
     margin: 10px 0;
 }
 
-.form-group {
+.form-group-consent {
     margin: 20px 0;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 10px;
+.form-group-consent label {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 1em;
 }
 
-.form-group input {
-    margin-right: 10px;
+.form-group-consent input[type="checkbox"] {
+    transform: scale(1.2); /* Makes the checkbox slightly bigger */
+    margin-left: 10px;
 }
+
 
 .form-group button {
     background: #ff5733;
@@ -220,43 +230,7 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px; /* Adjust padding for smaller screens */
-    }
-
-    .logo img {
-        height: 40px; /* Adjust logo size for smaller screens */
-    }
-
-    nav {
-        margin-top: 10px; /* Space between logo and buttons */
-        width: 100%; /* Full width for navigation buttons */
-        display: flex;
-        justify-content: space-between; /* Ensure buttons don't overflow */
-    }
     
-    .nav-button {
-        margin: 5px; /* Adjust margin for smaller screens */
-        flex: 1; /* Allow buttons to grow */
-        text-align: center; /* Center text in buttons */
-    }
-
-    .progress-bar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .progress-step {
-        width: 30px;
-        height: 30px;
-        font-size: 0.8em;
-    }
-
-    .progress-text {
-        font-size: 0.8em;
-    }
 
     .scrollable-box {
         max-height: 300px; /* Adjust height for smaller screens */
@@ -373,6 +347,31 @@ footer {
     font-size: 1em;
 }
 
+.form-group-days {
+    margin: 20px;
+    color: #fff;
+}
+
+.day-row {
+    display:block;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.day-row input[type="checkbox"] {
+    margin-right: 10px; /* Space between checkbox and label */
+}
+
+.inline-fields {
+    display: flex;
+    justify-content: space-between;
+}
+
+.time-fields {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 button {
     background: #ff5733;
     border: none;
@@ -421,5 +420,5 @@ button:hover {
         font-size: 0.8em;
         padding: 8px 16px;
     }
-    
+
 }
