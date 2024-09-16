@@ -91,7 +91,7 @@ async function generateMockData() {
       const start_point_name = faker.address.streetAddress();
       const end_point_name = faker.address.streetAddress();
       const status = faker.random.arrayElement(['active', 'completed']);
-      const driver_name = faker.name.findName();
+      //const driver_name = faker.name.findName();
 
       await pool.query(
         `INSERT INTO matching_data (
