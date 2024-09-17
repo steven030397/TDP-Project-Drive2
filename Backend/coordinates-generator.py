@@ -249,7 +249,7 @@ for user_id in range(k+1, numUser+k+1):
         arrive_start_time = add_time(leave_end_time, 30, 90)  # Arrive home within 30-90 minutes
         
         route_data.append({
-            'user_id': user_id,
+            'user_id': user_id,     
             'start_latitude': home_lat,
             'start_longitude': home_long,
             'start_point_name': home_address,
@@ -388,7 +388,7 @@ try:
         INSERT INTO route
         (user_id, start_latitude, start_longitude, start_point_name, 
         end_latitude, end_longitude, end_point_name, 
-        leave_start_time, arrive_end_time, leave_end_time, arrive_start_time, 
+        leave_start_time, destination_arrival_time, destination_departure_time, arrive_start_time, 
         travel_day, weekly_mileage_percentage, weekly_fuel_spent) 
         VALUES 
         (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
@@ -405,8 +405,8 @@ try:
             route['end_longitude'], 
             route['end_point_name'], 
             route['leave_start_time'], 
-            route['destination_arrival_time'], 
-            route['destination_departure_time'], 
+            route['arrive_end_time'], 
+            route['leave_end_time'], 
             route['arrive_start_time'], 
             route['travel_day'], 
             route['weekly_mileage_percentage'], 
