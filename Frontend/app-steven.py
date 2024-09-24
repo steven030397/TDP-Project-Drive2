@@ -100,6 +100,13 @@ def register():
         session['state'] = request.form.get('state')
         session['driver_license'] = request.form.get('driver-license')
 
+        connection = mysql.connector.connect(
+        host = "db4free.net",
+        port="3306",
+        user="steven3397",
+        password = "pass123word", 
+        database="drive2_db")
+        
         # Check if phone number or driver license already exists in database
         my_cursor = connection.cursor()
         my_cursor.execute('SELECT COUNT(*) FROM users WHERE phone_number = %s', (session['phone'],))
@@ -283,7 +290,7 @@ def credentials():
                 return redirect(url_for('credentials'))
 
             # Hash the password
-            hashed_password = generate_password_hash(session['password'], method='sha256')
+            hashed_password = generate_password_hash(session['password'], method='pbkdf2:sha256')
 
             # Insert new user data into the MySQL database
             has_car = bool(session.get('vehicles')) and session.get('vehicles') != 'No vehicle data found'
