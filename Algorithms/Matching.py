@@ -8,7 +8,9 @@ import math
 from datetime import datetime
 import pandas as pd
 import import_sql
+import export_sql
 import mysql.connector
+import numpy as np
 
 route_data = import_sql.getSQLData()
 
@@ -68,7 +70,7 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
 
                 if day_route_data.iloc[i]['has_car'] or day_route_data.iloc[j]['has_car']:
                     if day_route_data.iloc[i]['has_car'] and day_route_data.iloc[j]['has_car']:
-                        assigned_driver = 'any'
+                        assigned_driver = 0
                     elif day_route_data.iloc[i]['has_car']:
                         assigned_driver = day_route_data.iloc[i]['user_id']  # User i is the driver
                     else:
@@ -101,6 +103,7 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
                                 'destination_departure_diff': end_time_diff,
                                 'matched_day': travel_day,
                                 'driver': assigned_driver
+                            
                             })  
         
     return pd.DataFrame(matches)
@@ -108,8 +111,11 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
 matches_table = find_matches(route_data, distance_threshold=1.0, time_threshold=30)
 
 pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
 print(find_matches(route_data, distance_threshold=1.0, time_threshold=30))
 pd.reset_option('display.max_rows')
+
+#Only run once#export_sql.insertSQLData(matches_table)
 
 # def create_cost_table(user, matches_df, fuel_price_per_liter=40):
 #     cost_data = []
