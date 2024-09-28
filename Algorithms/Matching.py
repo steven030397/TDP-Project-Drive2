@@ -58,7 +58,6 @@ def haversine(lon1, lat1, lon2, lat2): # distance output km
 # def overlapping_days(days1, days2):
 #     return list(set(days1) & set(days2))
 
-
 def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
     matches = []
     for travel_day in {'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'}:
@@ -108,6 +107,7 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
 matches_table = find_matches(route_data, distance_threshold=1.0, time_threshold=30)
 
 pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
 print(find_matches(route_data, distance_threshold=1.0, time_threshold=30))
 pd.reset_option('display.max_rows')
 
