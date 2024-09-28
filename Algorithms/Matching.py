@@ -2,13 +2,16 @@
 # pip install scikit-learn
 # pip install pandas
 
-import sklearn
+#import 'scikit-learn'
 
 import math
 from datetime import datetime
 import pandas as pd
 import import_sql
+import export_sql
 import mysql.connector
+import numpy as np
+from math import radians, sin, cos, sqrt, atan2
 
 route_data = import_sql.getSQLData()
 
@@ -67,7 +70,7 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
 
                 if day_route_data.iloc[i]['has_car'] or day_route_data.iloc[j]['has_car']:
                     if day_route_data.iloc[i]['has_car'] and day_route_data.iloc[j]['has_car']:
-                        assigned_driver = 'any'
+                        assigned_driver = 0
                     elif day_route_data.iloc[i]['has_car']:
                         assigned_driver = day_route_data.iloc[i]['user_id']  # User i is the driver
                     else:
@@ -100,6 +103,7 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
                                 'destination_departure_diff': end_time_diff,
                                 'matched_day': travel_day,
                                 'driver': assigned_driver
+                            
                             })  
         
     return pd.DataFrame(matches)
@@ -110,6 +114,8 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 print(find_matches(route_data, distance_threshold=1.0, time_threshold=30))
 pd.reset_option('display.max_rows')
+
+#Only run once#export_sql.insertSQLData(matches_table)
 
 # def create_cost_table(user, matches_df, fuel_price_per_liter=40):
 #     cost_data = []
@@ -161,3 +167,111 @@ pd.reset_option('display.max_rows')
 
 # # # display(combined_df)
 
+## new time condition --Mila
+
+# Haversine formula to calculate distance between two points on the Earth
+def haversine(lon1, lat1, lon2, lat2):
+    R = 6371.0  # Radius of the Earth in km
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    distance = R * c
+    return distance
+
+# Function to find matches
+def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
+    matches = []
+    speed = 65.2  # Speed in km/h to calculate waiting time from road congestion in Australia paper https://www.aaa.asn.au/wp-content/uploads/2019/06/Road-Congestion-In-Australia-2019-v.3.pdf
+    
+    for travel_day in {'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'}:
+        day_route_data = route_data[(route_data['travel_day'] == travel_day)]
+        
+        for i in range(len(day_route_data) - 1):
+            for j in range(i + 1, len(day_route_data)):
+
+                # Determine if there's a car between the two users
+                if day_route_data.iloc[i]['has_car'] or day_route_data.iloc[j]['has_car']:
+                    if day_route_data.iloc[i]['has_car'] and day_route_data.iloc[j]['has_car']:
+                        assigned_driver = 0
+                    elif day_route_data.iloc[i]['has_car']:
+                        assigned_driver = day_route_data.iloc[i]['user_id']
+                    else:
+                        assigned_driver = day_route_data.iloc[j]['user_id']
+                
+                # Calculate the distance between the starting and destination points
+                start_distance = haversine(day_route_data.iloc[i]['start_longitude'], day_route_data.iloc[i]['start_latitude'], day_route_data.iloc[j]['start_longitude'], day_route_data.iloc[j]['start_latitude'])
+                end_distance = haversine(day_route_data.iloc[i]['end_longitude'], day_route_data.iloc[i]['end_latitude'], day_route_data.iloc[j]['end_longitude'], day_route_data.iloc[j]['end_latitude'])
+
+                # Convert times
+                user_i_leave_start = datetime.strptime(day_route_data.iloc[i]['leave_start_time'], '%H:%M')
+                user_j_leave_start = datetime.strptime(day_route_data.iloc[j]['leave_start_time'], '%H:%M')
+                user_i_departure = datetime.strptime(day_route_data.iloc[i]['destination_departure_time'], '%H:%M')
+                user_j_departure = datetime.strptime(day_route_data.iloc[j]['destination_departure_time'], '%H:%M')
+
+                # Case 1: type1 Route Leaving (compare 'leave_start_time')
+                start_time_diff = abs((user_i_leave_start - user_j_leave_start).total_seconds() / 60)
+                if start_time_diff <= time_threshold:
+                    matches.append({
+                        'user_id_person1': day_route_data.iloc[i]['user_id'],
+                        'user_id_person2': day_route_data.iloc[j]['user_id'],
+                        'distance_between_home': start_distance,
+                        'distance_between_destination': end_distance,
+                        'destination_arrival_diff': start_time_diff,
+                        'destination_departure_diff': end_time_diff,
+                        'match_type': 'type1 - route leaving',
+                        'matched_day': travel_day,
+                        'driver': assigned_driver
+                    })
+
+                # Case 2: type1 Route Return (compare 'destination_departure_time')
+                end_time_diff = abs((user_i_departure - user_j_departure).total_seconds() / 60)
+                if end_time_diff <= time_threshold:
+                    matches.append({
+                        'user_id_person1': day_route_data.iloc[i]['user_id'],
+                        'user_id_person2': day_route_data.iloc[j]['user_id'],
+                        'distance_between_home': start_distance,
+                        'distance_between_destination': end_distance,
+                        'destination_arrival_diff': start_time_diff,
+                        'destination_departure_diff': end_time_diff,
+                        'match_type': 'type1 - route return',
+                        'matched_day': travel_day,
+                        'driver': assigned_driver
+                    })
+
+                # Case 3: type2 Route Leaving with waiting time
+                waiting_time_user2 = (start_distance / speed) * 60  # Convert to minutes
+                adjusted_leave_time_user1 = user_i_leave_start + pd.to_timedelta(waiting_time_user2, unit='m')
+                waiting_diff_leave = abs((adjusted_leave_time_user1 - user_j_leave_start).total_seconds() / 60)
+                if waiting_diff_leave <= time_threshold:
+                    matches.append({
+                        'user_id_person1': day_route_data.iloc[i]['user_id'],
+                        'user_id_person2': day_route_data.iloc[j]['user_id'],
+                        'distance_between_home': start_distance,
+                        'distance_between_destination': end_distance,
+                        'destination_arrival_diff': start_time_diff,
+                        'destination_departure_diff': end_time_diff,
+                        'match_type': 'type2 - route leaving',
+                        'matched_day': travel_day,
+                        'driver': assigned_driver
+                    })
+
+                # Case 4: type2 Route Return with waiting time
+                waiting_time_user2_return = (end_distance / speed) * 60  # Convert to minutes
+                adjusted_departure_time_user1 = user_i_departure + pd.to_timedelta(waiting_time_user2_return, unit='m')
+                waiting_diff_return = abs((adjusted_departure_time_user1 - user_j_departure).total_seconds() / 60)
+                if waiting_diff_return <= time_threshold:
+                    matches.append({
+                        'user_id_person1': day_route_data.iloc[i]['user_id'],
+                        'user_id_person2': day_route_data.iloc[j]['user_id'],
+                        'distance_between_home': start_distance,
+                        'distance_between_destination': end_distance,
+                        'destination_arrival_diff': start_time_diff,
+                        'destination_departure_diff': end_time_diff,
+                        'match_type': 'type2 - route return',
+                        'matched_day': travel_day,
+                        'driver': assigned_driver
+                    })
+
+    return pd.DataFrame(matches)
