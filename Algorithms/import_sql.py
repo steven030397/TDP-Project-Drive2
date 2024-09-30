@@ -53,3 +53,23 @@ def getSQLData():
 
     # Return the DataFrame
     return df
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
