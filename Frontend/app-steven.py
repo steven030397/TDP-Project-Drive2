@@ -340,7 +340,7 @@ def credentials():
             # Insert route data for each day (one row per day)
             for day, times in days_data.items():
                 cursor.execute("""
-                    INSERT INTO route (user_id, start_latitude, start_longitude, start_point_name, end_latitude, end_longitude, end_point_name, leave_start_time, destination_arrival_time, destination_departure_time, arrive_start_time, travel_day, weekly_mileage_percentage, weekly_fuel_spent, google_actual_distance)
+                    INSERT INTO route (user_id, start_latitude, start_longitude, start_point_name, end_latitude, end_longitude, end_point_name, home_departure_time, destination_arrival_time, destination_departure_time, home_arrival_time, travel_day, weekly_mileage_percentage, weekly_fuel_spent, google_actual_distance)
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """, (
                     new_user_id, session['home_lat'], session['home_long'], session['home_address'], session['office_lat'], session['office_long'],
