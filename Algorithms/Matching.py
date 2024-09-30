@@ -2,7 +2,7 @@
 # pip install scikit-learn
 # pip install pandas
 
-import sklearn
+#import 'scikit-learn'
 
 import math
 from datetime import datetime
@@ -11,6 +11,7 @@ import import_sql
 import export_sql
 import mysql.connector
 import numpy as np
+from math import radians, sin, cos, sqrt, atan2
 
 route_data = import_sql.getSQLData()
 
@@ -58,7 +59,6 @@ def haversine(lon1, lat1, lon2, lat2):
 
 # def overlapping_days(days1, days2):
 #     return list(set(days1) & set(days2))
-
 
 def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
     matches = []
@@ -183,19 +183,18 @@ export_sql.insertSQLData(matches_table)
 # # # display(combined_df)
 
 
-
-
-
-
-
-
-
-
-
-
 ## new time condition --Mila
 
-
+# Haversine formula to calculate distance between two points on the Earth
+def haversine(lon1, lat1, lon2, lat2):
+    R = 6371.0  # Radius of the Earth in km
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    distance = R * c
+    return distance
 
 # Function to find matches
 def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
@@ -222,6 +221,7 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
                 end_distance = haversine(day_route_data.iloc[i]['end_longitude'], day_route_data.iloc[i]['end_latitude'], day_route_data.iloc[j]['end_longitude'], day_route_data.iloc[j]['end_latitude'])
 
                 # Convert times
+
                 user_i_leave_home = datetime.strptime(day_route_data.iloc[i]['home_departure_time'], '%H:%M')
                 user_j_leave_home = datetime.strptime(day_route_data.iloc[j]['home_departure_time'], '%H:%M')
                 user_i_leave_destination = datetime.strptime(day_route_data.iloc[i]['destination_departure_time'], '%H:%M')
@@ -292,3 +292,5 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
                     })
 
     return pd.DataFrame(matches)
+  
+  
