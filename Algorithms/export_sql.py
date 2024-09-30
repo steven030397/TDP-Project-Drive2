@@ -18,8 +18,10 @@ def insertSQLData(matches):
         
         for i in range(len(matches)):
             cursor.execute("""
-                INSERT INTO matching_data (user_id_person1, user_id_person2, distance_between_home, distance_between_destination, destination_arrival_diff, destination_departure_diff, matched_day, driver_id)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO matching_data (user_id_person1, user_id_person2, distance_between_home, distance_between_destination, destination_arrival_diff, destination_departure_diff, 
+                person1_home_lat, person1_home_long, person1_destination_lat, person1_destination_long, person2_home_lat, person2_home_long, person2_destination_lat, person2_destination_long,
+                matched_day, driver_id, status, status_info, match_type, match_quality, match_direction)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """, (
                 int(matches.iloc[i]['user_id_person1']) if isinstance(matches.iloc[i]['user_id_person1'], np.integer) else matches.iloc[i]['user_id_person1'],
                 int(matches.iloc[i]['user_id_person2']) if isinstance(matches.iloc[i]['user_id_person2'], np.integer) else matches.iloc[i]['user_id_person2'],
@@ -27,8 +29,21 @@ def insertSQLData(matches):
                 float(matches.iloc[i]['distance_between_destination']) if isinstance(matches.iloc[i]['distance_between_destination'], (np.float32, np.float64)) else matches.iloc[i]['distance_between_destination'],
                 float(matches.iloc[i]['destination_arrival_diff']) if isinstance(matches.iloc[i]['destination_arrival_diff'], (np.float32, np.float64)) else matches.iloc[i]['destination_arrival_diff'],
                 float(matches.iloc[i]['destination_departure_diff']) if isinstance(matches.iloc[i]['destination_departure_diff'], (np.float32, np.float64)) else matches.iloc[i]['destination_departure_diff'],
+                matches.iloc[i]['person1_home_lat'],
+                matches.iloc[i]['person1_home_long'],
+                matches.iloc[i]['person1_destination_lat'],
+                matches.iloc[i]['person1_destination_long'],
+                matches.iloc[i]['person2_home_lat'],
+                matches.iloc[i]['person2_home_long'],
+                matches.iloc[i]['person2_destination_lat'],
+                matches.iloc[i]['person2_destination_long'],
                 matches.iloc[i]['matched_day'],
-                int(matches.iloc[i]['driver']) if isinstance(matches.iloc[i]['driver'], np.integer) else matches.iloc[i]['driver']
+                int(matches.iloc[i]['driver']) if isinstance(matches.iloc[i]['driver'], np.integer) else matches.iloc[i]['driver'],
+                matches.iloc[i]['status'],
+                matches.iloc[i]['status_info'],
+                matches.iloc[i]['match_type'],
+                matches.iloc[i]['match_quality'],
+                matches.iloc[i]['match_direction']
             ))
             print(f"Row {i} inserted.")
 
