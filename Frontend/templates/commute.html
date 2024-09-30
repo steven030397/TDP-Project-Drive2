@@ -107,6 +107,7 @@
 
                         // Extract and display route details
                         var route = response.routes[0].legs[0];
+                        document.getElementById('google_actual_distance').value = route.distance.value;
                         document.getElementById('distance').textContent = 'Distance: ' + route.distance.text;
                         document.getElementById('duration').textContent = 'Estimated Duration: ' + route.duration.text;
                     } else {
@@ -175,6 +176,8 @@ window.onload = initAutocomplete;
         </div>
 
         <form action="{{ url_for('commute') }}" method="POST">
+
+            <input type="hidden" id="google_actual_distance" name="google_actual_distance">
 
             <div class="form-group">
                 <label for="home-address">Enter the address of home location:</label>
