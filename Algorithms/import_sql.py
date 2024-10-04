@@ -29,6 +29,8 @@ def getSQLData():
         route.home_arrival_time,
         route.travel_day,
         route.google_actual_distance,
+        route.cluster_id,
+        route.polyline,
         users.has_car
     FROM 
         route

@@ -65,4 +65,49 @@ def insertSQLData(matches):
 
 
 
+def insertClusterAndPolylineData(route_data):
+    try:
+        # Establish MySQL connection
+        connection = mysql.connector.connect(
+            host="db4free.net",
+            port=3306,
+            user="steven3397",
+            password="pass123word", 
+            database="drive2_db"
+        )
+
+        # Create a cursor object using the connection
+        cursor = connection.cursor(dictionary=True)
+        
+        
+        
+        # Update the database
+        update_query = """
+            UPDATE route
+            SET polyline = %s, cluster_id = %s
+            WHERE route_id = %s
+        """
+        for i in range(len(route_data)):
+            # Get the values for polyline, cluster_id, and route_id
+            polyline = route_data.iloc[i]['polyline']
+            cluster_id = int(route_data.iloc[i]['cluster_id']) if isinstance(route_data.iloc[i]['cluster_id'], (np.integer, int)) else route_data.iloc[i]['cluster_id']
+            route_id = int(route_data.iloc[i]['route_id']) if isinstance(route_data.iloc[i]['route_id'], (np.integer, int)) else route_data.iloc[i]['route_id']
+
+            # Execute the update query
+            cursor.execute(update_query, (polyline, cluster_id, route_id))
+            print(i, "updated")
+
+
+        # Commit the changes
+        connection.commit()
+
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+    
+    finally:
+        # Close the cursor and connection
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()
 
