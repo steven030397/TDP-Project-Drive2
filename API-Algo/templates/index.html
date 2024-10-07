@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car Model Search</title>
+  <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+  <h1>Car Model Search</h1>
+  <form action="http://localhost:5000/app" method="post">
+    <label for="carMake">Car Manufacturer:</label>
+    <input type="text" list="listcarMake" id="carMake" name="carMake" value="{{ car_make }}" required><br><br>
+    <datalist id="listcarMake">
+      <option value="Ford">
+      <option value="Mercury">
+      <option value="Hyundai">
+      <option value="Lexus">
+      <option value="Mercedes-Benz">
+      <option value="Toyota">
+      <option value="Volkswagen">
+      <option value="Honda">
+      <option value="Dodge">
+      <option value="Chevrolet">
+      <option value="MINI">
+      <option value="Nissan">
+      <option value="Ram">
+      <option value="Jeep">
+      <option value="Isuzu">
+      <option value="Kia">
+      <option value="GMC">
+      <option value="Audi">
+      <option value="Geo">
+      <option value="Acura">
+      <option value="Porsche">
+      <option value="Lincoln">
+      <option value="INFINITI">
+      <option value="Pontiac">
+      <option value="Suzuki">
+      <option value="Land Rover">
+      <option value="Plymouth">
+      <option value="Chrysler">
+      <option value="Mitsubishi">
+      <option value="MAZDA">
+      <option value="BMW">
+      <option value="Scion">
+      <option value="Bentley">
+      <option value="Subaru">
+      <option value="Saab">
+      <option value="Maserati">
+      <option value="Cadillac">
+      <option value="Ferrari">
+      <option value="HUMMER">
+      <option value="smart">
+      <option value="Oldsmobile">
+      <option value="Alfa Romeo">
+      <option value="Lamborghini">
+      <option value="Buick">
+      <option value="Jaguar">
+      <option value="Freightliner">
+      <option value="Volvo">
+      <option value="Aston Martin">
+      <option value="Daewoo">
+      <option value="FIAT">
+      <option value="Maybach">
+      <option value="Saturn">
+      <option value="Eagle">
+      <option value="Lotus">
+      <option value="Polestar">
+      <option value="Genesis">
+      <option value="Rolls-Royce">
+      <option value="McLaren">
+      <option value="Tesla">
+      <option value="Rivian">
+      <option value="Daihatsu">
+      <option value="Panoz">
+      <option value="Fisker">
+      <option value="SRT">
+    </datalist>
+    <label for="modelYear">Model Year:</label>
+    <input type="number" id="modelYear" name="modelYear" value="{{ model_year }}" required><br><br>
+    <input type="submit" value="Search">
+  </form>
+  <div id="results">
+    {{ results |  safe  }}
+  </div>
+</body>
+</html>
