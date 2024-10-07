@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import pandas as pd
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder='templates')
 
 try:
     # Load the CSV data into a DataFrame
@@ -12,7 +12,7 @@ except FileNotFoundError:
 
 @app.route('/')
 def home():
-    return 'Hello, World!'
+    return render_template('index.html')
 
 @app.route('/app', methods=['GET', 'POST'])
 def index():
@@ -22,7 +22,7 @@ def index():
 
         try:
             # Filter the DataFrame with case-insensitive search (optional)
-            filtered_data = df[(df['Car Make'].str.lower() == car_make.lower()) & (df['Model Year'] == int(model_year))]
+            filtered_data = df[(df['Make'].str.lower() == car_make.lower()) & (df['Year'] == int(model_year))]
 
             # Handle case where no results are found
             if filtered_data.empty:
