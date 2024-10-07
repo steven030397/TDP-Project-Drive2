@@ -62,6 +62,26 @@
         .no-match-msg {
             color: #333;
         }
+        .match-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .match-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            width: calc(30% - 20px);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .match-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .match-info {
+            margin: 5px 0;
+        }
+    </style>
     </style>
 </head>
 <body>
@@ -95,15 +115,25 @@
             <p>Hello, Guest!</p>
         {% endif %}
 
+        <h1>The User ID {{session['MATCH_TEST']}}</h1>
+          
+
         <div class="card">
             <h2>Matches</h2>
             <p class="no-match-msg">There are no matches at the moment.</p>
         </div>
     </div>
+    <h1>User Matches</h1>
+    <div id="matches" class="match-container">
+        <!-- Match boxes will be inserted here -->
+    </div>
+
+   
 
     <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 DRIVE2. All rights reserved.</p>
     </footer>
+   
 </body>
 </html>

@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon/favicon-16x16.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - DRIVE2</title>
+    <title>Settings - DRIVE2</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
         /* Navigation Pane Styles */
@@ -52,6 +52,10 @@
             border-radius: 5px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px; /* Space between cards */
+        }
+        .section-title {
+            color:#131313;            
         }
 
         .welcome-message {
@@ -61,6 +65,30 @@
 
         .no-match-msg {
             color: #333;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #f4f4f4;
+            padding-bottom: 5px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -85,7 +113,70 @@
         <a href="{{ url_for('settings') }}" class="selected">Settings</a>
     </div>
 
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="welcome-message">Settings</h1>
 
+        <!-- Edit Details Section -->
+        <div class="card">
+            <h2 class="section-title">Edit Details</h2>
+            <div class="input-group">
+                <label for="personal-details">Personal Details</label>
+                <input type="text" id="personal-details" placeholder="Enter your name...">
+            </div>
+            <div class="input-group">
+                <label for="vehicle-details">Vehicle Details</label>
+                <input type="text" id="vehicle-details" placeholder="Enter your vehicle details...">
+            </div>
+            <div class="input-group">
+                <label for="route-details">Route Details</label>
+                <input type="text" id="route-details" placeholder="Enter your route details...">
+            </div>
+            <button class="nav-button">Save Changes</button>
+        </div>
+
+        <!-- Preferences Section -->
+        <div class="card">
+            <h2 class="section-title">Preferences</h2>
+            <div class="input-group">
+                <label for="driving-preference">Driving Preference</label>
+                <select id="driving-preference">
+                    <option value="eco">Eco-friendly</option>
+                    <option value="fast">Fastest route</option>
+                    <option value="scenic">Scenic route</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="max-distance">Maximum Distance Threshold (km)</label>
+                <input type="number" id="max-distance" placeholder="Enter max distance...">
+            </div>
+            <div class="input-group">
+                <label for="max-time">Maximum Time Threshold (minutes)</label>
+                <input type="number" id="max-time" placeholder="Enter max time...">
+            </div>
+            <button class="nav-button">Save Preferences</button>
+        </div>
+
+        <!-- Notification Section -->
+        <div class="card">
+            <h2 class="section-title">Notifications</h2>
+            <div class="input-group">
+                <label for="mobile-alert">Mobile Match Alert</label>
+                <select id="mobile-alert">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="chat-alert">Chat Alert</label>
+                <select id="chat-alert">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select>
+            </div>
+            <button class="nav-button">Save Notification Settings</button>
+        </div>
+    </div>
 
     <!-- Footer Section -->
     <footer>

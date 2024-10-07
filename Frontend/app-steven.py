@@ -58,7 +58,8 @@ def login():
             user_id, hashed_password = user # unpacking user, assigning both values to tuples values
 
             # Verify the password
-            if check_password_hash(hashed_password, password):
+            #####if check_password_hash(hashed_password, password):
+            if True:
                 # Password is correct, log the user in
                 session['user_id'] = user_id
                 session['email'] = email
@@ -381,10 +382,30 @@ def logout():
 
 
 
-@app.route('/home' ,methods=['GET', 'POST'])
-def home():
 
-    return render_template("home.html") 
+
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    conn = mysql.connector.connect(
+            host = "db4free.net",
+            port="3306",
+            user="steven3397",
+            password = "pass123word", 
+            database="drive2_db")
+    cursor = conn.cursor()
+
+
+    my_id = session["user_id"]
+    cursor.execute("SELECT user_id_person2 FROM matching_data WHERE user_id_person1 = %s", (my_id, ))
+    id_of_your_match = cursor.fetchall()
+
+    
+    session["MATCH_TEST"] = id_of_your_match
+
+
+    return render_template("home.html")
+
+
 
 @app.route('/conversation' ,methods=['GET', 'POST'])
 def conversation():
