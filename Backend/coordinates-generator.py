@@ -8,7 +8,7 @@ import requests
 import random
 
 
-numUser = 975;
+numUser = 95
 
 
 #####residential and business address api
@@ -90,7 +90,23 @@ print("Filtered Residential Records:", len(filtered_residential_records))
 print("Filtered Business Records:", len(filtered_business_records))
 
 # Your Google API key
-# API_KEY = 'AIzaSyBWW9zve7B8Zy7HM2mHDtNz8HXED_HiFlg'
+API_KEY = 'AIzaSyBWW9zve7B8Zy7HM2mHDtNz8HXED_HiFlg'
+
+def get_route_distance(origin, destination):
+    """Function to get route distance between origin and destination using Google Maps Directions API."""
+    url = f'https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&key={API_KEY}'
+    
+    response = requests.get(url)
+    data = response.json()
+
+    if data['status'] == 'OK':
+        # Extract distance and duration from the response
+        distance = data['routes'][0]['legs'][0]['distance']['value']  # distance in meters
+        duration = data['routes'][0]['legs'][0]['duration']['value']  # duration in seconds
+        return distance, duration
+    else:
+        print(f"Error fetching directions: {data['status']}")
+        return None, None
 
 # # Function to get random coordinates within a radius around a specified location
 # def get_random_coordinates(lat, lng, radius=5000, place_type="point_of_interest", max_results=10):
@@ -189,7 +205,7 @@ result = my_cursor.fetchone()
 
 print(result[0])
 
-if(not result[0]):
+if(result[0] == -1):
     k = 0
 else:
     k = result[0]
@@ -204,7 +220,7 @@ my_cursor.close()
 connection.close()
 
 
-# Generate 100 user pairs
+# Generate numUser user pairs
 for user_id in range(k+1, numUser+k+1):
     
     ###home_place_type = random.choice(home_place_types)
@@ -223,6 +239,13 @@ for user_id in range(k+1, numUser+k+1):
     
     home_lat, home_long, home_address = get_random_record(filtered_residential_records, 'building_address')
 
+    # Combine latitude and longitude into a single string
+    origin = f"{home_lat},{home_long}"
+    destination = f"{office_lat},{office_long}"
+
+    # Get actual route distance and duration
+    google_actual_distance, google_actual_duration = get_route_distance(origin, destination)
+
     # Assign a random number of rows (1 to 5)
     nrow = random.randint(1, 5)
 
@@ -236,7 +259,6 @@ for user_id in range(k+1, numUser+k+1):
     # Calculate weekly mileage percentage and fuel spent based on nrow
     weekly_mileage_percentage = calculate_weekly_mileage(nrow)
     weekly_fuel_spent = calculate_weekly_fuel_spent(nrow)
-    
     
     # Duplicate the row nrow times
     for i in range(nrow):
@@ -262,7 +284,8 @@ for user_id in range(k+1, numUser+k+1):
             'leave_start_time': leave_start_time,
             'arrive_end_time': arrive_end_time,
             'leave_end_time': leave_end_time,
-            'arrive_start_time': arrive_start_time
+            'arrive_start_time': arrive_start_time,
+            'google_actual_distance': google_actual_distance
         })
 
 # Display generated data for verification
@@ -389,9 +412,9 @@ try:
         (user_id, start_latitude, start_longitude, start_point_name, 
         end_latitude, end_longitude, end_point_name, 
         leave_start_time, destination_arrival_time, destination_departure_time, arrive_start_time, 
-        travel_day, weekly_mileage_percentage, weekly_fuel_spent) 
+        travel_day, weekly_mileage_percentage, weekly_fuel_spent, google_actual_distance) 
         VALUES 
-        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
 
     # Execute query with parameters
@@ -410,7 +433,8 @@ try:
             route['arrive_start_time'], 
             route['travel_day'], 
             route['weekly_mileage_percentage'], 
-            route['weekly_fuel_spent']
+            route['weekly_fuel_spent'],
+            route['google_actual_distance']
         ))
     # Commit the transaction after all queries
     connection.commit()

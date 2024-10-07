@@ -23,9 +23,12 @@ def getSQLData():
         route.start_longitude,
         route.end_latitude,
         route.end_longitude,
+        route.home_departure_time,
         route.destination_arrival_time,
         route.destination_departure_time,
+        route.home_arrival_time,
         route.travel_day,
+        route.google_actual_distance,
         users.has_car
     FROM 
         route
@@ -50,3 +53,23 @@ def getSQLData():
 
     # Return the DataFrame
     return df
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

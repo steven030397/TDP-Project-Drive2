@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, session, url_for, flash
 import mysql.connector
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 
 # replace with non-local database Postgresql
 connection = mysql.connector.connect(
@@ -151,11 +152,12 @@ def test_personal():
         'Email Confirmed': session.get('confirm_email'),
         'Password': session.get('password'),
         'Password Confirmed': session.get('confirm_password'),
-        'ZZZusername': session.get('user_id'),
+        'Username': session.get('user_id'),
         'Home Latitude': session.get('home_lat'),
         'Home Longitude': session.get('home_long'),
         'Office Latitude': session.get('office_lat'),
-        'Office Longitude': session.get('office_long')
+        'Office Longitude': session.get('office_long'),
+        'Google Actual Distance': session.get('google_actual_distance')
     }
 
     # Add dynamic days data
@@ -223,6 +225,7 @@ def commute():
         session['home_long'] = request.form.get('lng1')
         session['office_lat'] = request.form.get('lat2')
         session['office_long'] = request.form.get('lng2')
+        session['google_actual_distance'] = request.form.get('google_actual_distance')
         
         # Store selected days and times
         days = request.form.getlist('days[]')
@@ -337,12 +340,12 @@ def credentials():
             # Insert route data for each day (one row per day)
             for day, times in days_data.items():
                 cursor.execute("""
-                    INSERT INTO route (user_id, start_latitude, start_longitude, start_point_name, end_latitude, end_longitude, end_point_name, leave_start_time, destination_arrival_time, destination_departure_time, arrive_start_time, travel_day, weekly_mileage_percentage, weekly_fuel_spent)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    INSERT INTO route (user_id, start_latitude, start_longitude, start_point_name, end_latitude, end_longitude, end_point_name, home_departure_time, destination_arrival_time, destination_departure_time, home_arrival_time, travel_day, weekly_mileage_percentage, weekly_fuel_spent, google_actual_distance)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """, (
                     new_user_id, session['home_lat'], session['home_long'], session['home_address'], session['office_lat'], session['office_long'],
                     session['office_address'], times['Leave Home'], times['Arrive Office'], times['Leave Office'], times['Arrive Home'],
-                    day, session['percentage_mileage'], session['fuel_cost']
+                    day, session['percentage_mileage'], session['fuel_cost'], session['google_actual_distance']
                 ))
                 print(f"Route data inserted for day: {day}")
 

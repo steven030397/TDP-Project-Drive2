@@ -17,17 +17,16 @@ route_data = import_sql.getSQLData()
 
 print(route_data)
 
-def haversine(lon1, lat1, lon2, lat2): # distance output km
-    R = 6371  # Earth radius in kilometers
-    phi1 = math.radians(lat1)
-    phi2 = math.radians(lat2)
-    delta_phi = math.radians(lat2 - lat1)
-    delta_lambda = math.radians(lon2 - lon1)
-    
-    a = math.sin(delta_phi/2)**2 + math.cos(phi1) * math.cos(phi2) * math.sin(delta_lambda/2)**2
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-    
-    return R * c  
+# Haversine formula to calculate distance between two points on the Earth
+def haversine(lon1, lat1, lon2, lat2):
+    R = 6371.0  # Radius of the Earth in km
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    distance = R * c
+    return distance
 
 
 
@@ -61,11 +60,13 @@ def haversine(lon1, lat1, lon2, lat2): # distance output km
 # def overlapping_days(days1, days2):
 #     return list(set(days1) & set(days2))
 
-
 def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
     matches = []
+    speed = 65.2  # Speed in km/h to calculate waiting time from road congestion in Australia paper https://www.aaa.asn.au/wp-content/uploads/2019/06/Road-Congestion-In-Australia-2019-v.3.pdf
+    
     for travel_day in {'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'}:
         day_route_data = route_data[(route_data['travel_day'] == travel_day)]
+        
         for i in range(len(day_route_data) - 1):
             for j in range(i + 1, len(day_route_data)):
 
@@ -98,13 +99,25 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
                             matches.append({
                                 'user_id_person1': day_route_data.iloc[i]['user_id'],
                                 'user_id_person2': day_route_data.iloc[j]['user_id'],
+                                'person1_home_lat': day_route_data.iloc[i]['start_latitude'],
+                                'person1_home_long': day_route_data.iloc[i]['start_longitude'],
+                                'person1_destination_lat': day_route_data.iloc[i]['end_latitude'],
+                                'person1_destination_long': day_route_data.iloc[i]['end_longitude'],
+                                'person2_home_lat': day_route_data.iloc[j]['start_latitude'],
+                                'person2_home_long': day_route_data.iloc[j]['start_longitude'],
+                                'person2_destination_lat': day_route_data.iloc[j]['end_latitude'],
+                                'person2_destination_long': day_route_data.iloc[j]['end_longitude'],
                                 'distance_between_home': start_distance,
                                 'distance_between_destination': end_distance,
                                 'destination_arrival_diff': start_time_diff,
                                 'destination_departure_diff': end_time_diff,
                                 'matched_day': travel_day,
-                                'driver': assigned_driver
-                            
+                                'driver': assigned_driver,
+                                'status': "active",
+                                'status_info': "",
+                                'match_type': "type_1",
+                                'match_quality': "",
+                                'match_direction': ""
                             })  
         
     return pd.DataFrame(matches)
@@ -116,7 +129,8 @@ pd.set_option('display.max_columns', None)
 print(find_matches(route_data, distance_threshold=1.0, time_threshold=30))
 pd.reset_option('display.max_rows')
 
-#Only run once#export_sql.insertSQLData(matches_table)
+#Only run once#
+export_sql.insertSQLData(matches_table)
 
 # def create_cost_table(user, matches_df, fuel_price_per_liter=40):
 #     cost_data = []
@@ -168,6 +182,7 @@ pd.reset_option('display.max_rows')
 
 # # # display(combined_df)
 
+
 ## new time condition --Mila
 
 # Haversine formula to calculate distance between two points on the Earth
@@ -206,13 +221,14 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
                 end_distance = haversine(day_route_data.iloc[i]['end_longitude'], day_route_data.iloc[i]['end_latitude'], day_route_data.iloc[j]['end_longitude'], day_route_data.iloc[j]['end_latitude'])
 
                 # Convert times
-                user_i_leave_start = datetime.strptime(day_route_data.iloc[i]['leave_start_time'], '%H:%M')
-                user_j_leave_start = datetime.strptime(day_route_data.iloc[j]['leave_start_time'], '%H:%M')
-                user_i_departure = datetime.strptime(day_route_data.iloc[i]['destination_departure_time'], '%H:%M')
-                user_j_departure = datetime.strptime(day_route_data.iloc[j]['destination_departure_time'], '%H:%M')
 
-                # Case 1: type1 Route Leaving (compare 'leave_start_time')
-                start_time_diff = abs((user_i_leave_start - user_j_leave_start).total_seconds() / 60)
+                user_i_leave_home = datetime.strptime(day_route_data.iloc[i]['home_departure_time'], '%H:%M')
+                user_j_leave_home = datetime.strptime(day_route_data.iloc[j]['home_departure_time'], '%H:%M')
+                user_i_leave_destination = datetime.strptime(day_route_data.iloc[i]['destination_departure_time'], '%H:%M')
+                user_j_leave_destination = datetime.strptime(day_route_data.iloc[j]['destination_departure_time'], '%H:%M')
+
+                # Case 1: type1 Route Leaving (compare 'home_departure_time')
+                start_time_diff = abs((user_i_leave_home - user_j_leave_home).total_seconds() / 60)
                 if start_time_diff <= time_threshold:
                     matches.append({
                         'user_id_person1': day_route_data.iloc[i]['user_id'],
@@ -276,3 +292,5 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
                     })
 
     return pd.DataFrame(matches)
+  
+  
