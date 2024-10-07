@@ -11,6 +11,9 @@ import googlemaps
 import polyline
 from sklearn.cluster import DBSCAN, KMeans
 from sklearn.preprocessing import StandardScaler
+import folium
+import matplotlib.cm as cm
+import matplotlib.colors as colors
 
 
 # Get data from SQL
@@ -77,4 +80,109 @@ for index, row in route_data.iterrows():
             route_data.at[index, 'polyline'] = polyline  # Fill the polyline column
 
 print(route_data)
-export_sql.insertClusterAndPolylineData(route_data)
+
+
+# now do this clustering
+decoded_coords = []
+route_map = {}
+route_ids = []
+
+for index, route in route_data.iterrows():
+    route_id = route['route_id']
+    encoded_polyline = route['polyline']
+
+    decoded = polyline.decode(encoded_polyline)
+    decoded_coords.extend(decoded)
+    route_map[route_id] = decoded
+    route_ids.append(route_id)
+
+coords = np.array(decoded_coords)
+
+scaler = StandardScaler()
+scaled_coords = scaler.fit_transform(coords)
+
+# db = DBSCAN(eps=0.5, min_samples=10)
+# labels = db.fit_predict(scaled_coords)
+
+kmeans = KMeans(n_clusters=10, random_state=42)
+labels = kmeans.fit_predict(scaled_coords)
+
+cluster_map = {}
+
+current_index = 0
+
+# Map each route_id to its cluster label based on the first coordinate
+for route_id, coords in route_map.items():
+    # Use the cluster label of the first coordinate of each route
+    cluster_map[route_id] = labels[current_index]
+
+    # Increment the index by the number of coordinates in the current route
+    current_index += len(coords)
+
+    # Check for overflow
+    if current_index >= len(labels):
+        break
+
+
+#export_sql.insertClusterAndPolylineData(route_data, cluster_map)
+
+### VISUALISE CLUSTERS ###
+for travel_day in {'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'}:
+    day_route_data = route_data[(route_data['travel_day'] == travel_day)]
+
+    # Step 2: Create a folium map centered at an average location
+    # Calculate the mean latitude and longitude to set the initial map view
+    mean_latitude = day_route_data['start_latitude'].mean()
+    mean_longitude = day_route_data['start_longitude'].mean()
+
+    # Initialize a folium map
+    map_obj = folium.Map(location=[mean_latitude, mean_longitude], zoom_start=12, tiles='CartoDB positron')
+
+    # Step 3: Set up color mapping for clusters
+    unique_clusters = day_route_data['cluster_id'].unique()
+    colormap = cm.get_cmap('Set1', len(unique_clusters))  # 'Set1' is a good color palette for categories
+    norm = colors.Normalize(vmin=min(unique_clusters), vmax=max(unique_clusters))
+
+    # Step 4: Plot start and end points with colors based on cluster ID
+    for _, row in day_route_data.iterrows():
+        # Set color based on cluster_id
+        cluster_color = colors.to_hex(colormap(norm(row['cluster_id'])))
+
+        # Add a circle marker for the start point
+        folium.CircleMarker(
+            location=[row['start_latitude'], row['start_longitude']],
+            radius=5,
+            color=cluster_color,
+            fill=True,
+            fill_color=cluster_color,
+            fill_opacity=0.7,
+            popup=f"Cluster ID: {row['cluster_id']}<br>Start Coordinates: ({row['start_latitude']}, {row['start_longitude']})"
+        ).add_to(map_obj)
+
+        # Add a circle marker for the end point with the same color
+        folium.CircleMarker(
+            location=[row['end_latitude'], row['end_longitude']],
+            radius=5,
+            color=cluster_color,
+            fill=True,
+            fill_color=cluster_color,
+            fill_opacity=0.7,
+            popup=f"Cluster ID: {row['cluster_id']}<br>End Coordinates: ({row['end_latitude']}, {row['end_longitude']})"
+        ).add_to(map_obj)
+
+
+        # Draw a polyline connecting the start and end points
+        folium.PolyLine(
+            locations=[(row['start_latitude'], row['start_longitude']), (row['end_latitude'], row['end_longitude'])],
+            color=cluster_color,
+            weight=2.5,
+            opacity=0.8
+        ).add_to(map_obj)
+
+    # Step 5: Save the map as an HTML file
+    map_filename = f"{travel_day.lower()}_route_clusters_map.html"
+    map_obj.save(map_filename)
+    print(f"Map created and saved as '{map_filename}' for {travel_day}.")
+
+### ###
+

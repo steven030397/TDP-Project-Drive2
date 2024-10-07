@@ -65,7 +65,7 @@ def insertSQLData(matches):
 
 
 
-def insertClusterAndPolylineData(route_data):
+def insertClusterAndPolylineData(route_data, cluster_map):
     try:
         # Establish MySQL connection
         connection = mysql.connector.connect(
@@ -95,8 +95,14 @@ def insertClusterAndPolylineData(route_data):
 
             # Execute the update query
             cursor.execute(update_query, (polyline, cluster_id, route_id))
-            print(i, "updated")
+        
 
+        for route_id, cluster_id in cluster_map.items():
+            cursor.execute("""
+                UPDATE route 
+                SET cluster_id = %s 
+                WHERE route_id = %s
+            """, (int(cluster_id), route_id))
 
         # Commit the changes
         connection.commit()
