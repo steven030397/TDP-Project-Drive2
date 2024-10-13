@@ -8,7 +8,7 @@ import requests
 import random
 
 
-numUser = 95
+numUser = 1000
 
 
 #####residential and business address api
@@ -219,25 +219,101 @@ connection.commit()
 my_cursor.close()
 connection.close()
 
+# # Establish MySQL connection
+connection = mysql.connector.connect(
+    host="db4free.net",
+    port="3306",
+    user="steven3397",
+    password="pass123word", 
+    database="drive2_db"
+)
+
+my_cursor = connection.cursor()
+
+fake = Faker()
+
+# Function to generate random gender
+def random_gender():
+    return random.choice(['Male', 'Female', 'Other'])
+
+# Function to generate random 'has_car' value
+def random_has_car():
+    return random.choice(['NO', 'YES'])
+
+def check_existing_user(cursor, username, email):
+    cursor.execute("SELECT COUNT(*) FROM users WHERE username = %s OR email = %s", (username, email))
+    return cursor.fetchone()[0] > 0
+
+# Establish MySQL connection
+connection = mysql.connector.connect(
+    host="db4free.net",
+    port="3306",
+    user="steven3397",
+    password="pass123word", 
+    database="drive2_db"
+)
+
+my_cursor = connection.cursor()
+
+# Generate users
+for user_id in range(k+1, numUser+k+1):
+    unique = False
+    while not unique:
+        username = fake.user_name()
+        email = fake.email()
+        
+        # Check if username or email already exists
+        if not check_existing_user(my_cursor, username, email):
+            unique = True
+            password = fake.password(length=10)
+            first_name = fake.first_name()
+            middle_name = fake.first_name()
+            last_name = fake.last_name()
+            date_of_birth = fake.date_of_birth(minimum_age=18, maximum_age=70)
+            gender = random_gender()
+            phone_number = fake.phone_number()
+            address = fake.address().replace("\n", " ")
+            state = fake.state()
+            driver_license_number = fake.license_plate()
+            has_car = random_has_car()
+            
+            # Create the SQL query
+            sql_query = """
+            INSERT INTO users 
+            (user_id, username, password, email, first_name, middle_name, last_name, date_of_birth, gender, phone_number, address, state, driver_license_number, has_car, address_latitude, address_longitude)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """
+            
+            # Data tuple to insert
+            user_data = (user_id, username, password, email, first_name, middle_name, last_name, date_of_birth, gender, phone_number, address, state, driver_license_number, has_car, 0, 0)
+            
+            # Execute the query
+            my_cursor.execute(sql_query, user_data)
+
+
+
+
+
+print("ALL users inserted into the database successfully.")
 
 # Generate numUser user pairs
 for user_id in range(k+1, numUser+k+1):
     
-    ###home_place_type = random.choice(home_place_types)
-    ###home_location = get_random_coordinates(-37.8136, 144.9631, radius=50000, place_type=home_place_type)
-    
-    # Get a random office location (from one of the office types)
-    # office_place_type = random.choice(office_place_types)
-    # office_location = get_random_coordinates(-37.8136, 144.9631, radius=20000, place_type=office_place_type)
-    
-    ###if home_location and office_location:
-        ###home_lat, home_long, home_name, home_address = home_location
-        ###office_lat, office_long, office_name, office_address = office_location
-
-    
     office_lat, office_long, office_address = office_location = get_random_record(filtered_business_records, 'business_address')
     
     home_lat, home_long, home_address = get_random_record(filtered_residential_records, 'building_address')
+
+    update_query = """
+        UPDATE users 
+        SET address_latitude = %s, 
+            address_longitude = %s,
+            address = %s
+        WHERE user_id = %s
+    """
+    my_cursor.execute(update_query, (home_lat, home_long, home_address, user_id))
+
+    # Commit the changes
+    connection.commit()
 
     # Combine latitude and longitude into a single string
     origin = f"{home_lat},{home_long}"
@@ -292,90 +368,9 @@ for user_id in range(k+1, numUser+k+1):
 #for route in route_data:
  #   print(route)
 
-
-
-
-
-# # Establish MySQL connection
-connection = mysql.connector.connect(
-    host="db4free.net",
-    port="3306",
-    user="steven3397",
-    password="pass123word", 
-    database="drive2_db"
-)
-
-my_cursor = connection.cursor()
-
-fake = Faker()
-
-# Function to generate random gender
-def random_gender():
-    return random.choice(['Male', 'Female', 'Other'])
-
-# Function to generate random 'has_car' value
-def random_has_car():
-    return random.choice([True, False])
-
-def check_existing_user(cursor, username, email):
-    cursor.execute("SELECT COUNT(*) FROM users WHERE username = %s OR email = %s", (username, email))
-    return cursor.fetchone()[0] > 0
-
-# Establish MySQL connection
-connection = mysql.connector.connect(
-    host="db4free.net",
-    port="3306",
-    user="steven3397",
-    password="pass123word", 
-    database="drive2_db"
-)
-
-my_cursor = connection.cursor()
-
-# Generate users
-for user_id in range(k+1, numUser+k+1):
-    unique = False
-    while not unique:
-        username = fake.user_name()
-        email = fake.email()
-        
-        # Check if username or email already exists
-        if not check_existing_user(my_cursor, username, email):
-            unique = True
-            password = fake.password(length=10)
-            first_name = fake.first_name()
-            middle_name = fake.first_name()
-            last_name = fake.last_name()
-            date_of_birth = fake.date_of_birth(minimum_age=18, maximum_age=70)
-            gender = random_gender()
-            phone_number = fake.phone_number()
-            address = fake.address().replace("\n", " ")
-            state = fake.state()
-            driver_license_number = fake.license_plate()
-            has_car = random_has_car()
-            
-            # Create the SQL query
-            sql_query = """
-            INSERT INTO users 
-            (user_id, username, password, email, first_name, middle_name, last_name, date_of_birth, gender, phone_number, address, state, driver_license_number, has_car)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-            """
-            
-            # Data tuple to insert
-            user_data = (user_id, username, password, email, first_name, middle_name, last_name, date_of_birth, gender, phone_number, address, state, driver_license_number, has_car)
-            
-            # Execute the query
-            my_cursor.execute(sql_query, user_data)
-
-# Commit the changes
-connection.commit()
-
 # Close the connection
 my_cursor.close()
 connection.close()
-
-print("ALL users inserted into the database successfully.")
-
 
 
 
@@ -392,18 +387,6 @@ connection = mysql.connector.connect(
 # Create a cursor object
 my_cursor = connection.cursor()
 
-# # Function to generate the SQL INSERT INTO query
-# def generate_insert_query():
-#     return f"""
-#     query = """
-#     INSERT INTO route
-#     (user_id, start_latitude, start_longitude, start_point_name, 
-#     end_latitude, end_longitude, end_point_name, 
-#     leave_start_time, arrive_end_time, leave_end_time, arrive_start_time, 
-#     travel_day, weekly_mileage_percentage, weekly_fuel_spent) 
-#     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) """
-
-
 # Generate SQL for all rows
 try:
     # Parameterized query to insert data
@@ -411,7 +394,7 @@ try:
         INSERT INTO route
         (user_id, start_latitude, start_longitude, start_point_name, 
         end_latitude, end_longitude, end_point_name, 
-        leave_start_time, destination_arrival_time, destination_departure_time, arrive_start_time, 
+        home_departure_time, destination_arrival_time, destination_departure_time, home_arrival_time, 
         travel_day, weekly_mileage_percentage, weekly_fuel_spent, google_actual_distance) 
         VALUES 
         (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)

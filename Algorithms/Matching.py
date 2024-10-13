@@ -257,6 +257,21 @@ def find_matches(route_data, distance_threshold=1.0, time_threshold=30):
                         'driver': assigned_driver
                     })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 # Case 3: type2 Route Leaving with waiting time
                 waiting_time_user2 = (start_distance / speed) * 60  # Convert to minutes
                 adjusted_leave_time_user1 = user_i_leave_start + pd.to_timedelta(waiting_time_user2, unit='m')
