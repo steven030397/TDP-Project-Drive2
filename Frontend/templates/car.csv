@@ -1,0 +1,279 @@
+Make,Models
+Acura,"['RLX Sport Hybrid' 'RDX' 'TL' 'Integra' 'CL' 'TLX' 'RL' 'TSX' 'MDX'
+ 'MDX Sport Hybrid' 'ZDX' 'RSX' 'ILX' 'Legend' 'RLX' 'NSX' 'SLX' 'Vigor']"
+Alfa Romeo,['164' '4C' '4C Spider' 'Stelvio' 'Giulia' 'Spider']
+Aston Martin,"['Vantage' 'Vanquish' 'DBS' 'DB9' 'Vanquish S' 'Rapide' 'Rapide S'
+ 'Virage' 'DB11' 'DB9 GT']"
+Audi,"['A6 allroad' 'TT' 'S5' 'S8' 'Cabriolet' 'A8' 'allroad' 'A6' '90' 'A3'
+ 'SQ5' 'S4' 'A4' 'R8' 'A7' 'RS 7' 'S6' 'A3 Sportback e-tron' 'S3' 'A5'
+ 'RS 5' 'Q3' 'S7' 'Q7' 'Q5' 'RS 3' 'Quattro' 'Q8' 'RS 4' '100' 'e-tron'
+ 'A4 allroad' 'A5 Sport' 'S4 (2005.5)' 'A4 (2005.5)' '80' 'RS 6']"
+BMW,"['3 Series' 'X5' 'X5 M' 'Z4' 'X3' '6 Series' '5 Series' '7 Series'
+ '1 Series' '8 Series' 'i3' 'M3' '4 Series' 'M5' 'M2' 'X4' 'X6 M' 'X1'
+ 'M6' 'X6' 'Alpina B7' '2 Series' 'i8' 'Z3' 'Z8' 'X7' 'Z4 M' 'M4' 'X2' 'M']"
+Bentley,"['Continental' 'Mulsanne' 'Arnage' 'Flying Spur' 'Bentayga' 'Azure'
+ 'Brooklands' 'Azure T']"
+Buick,"['Lucerne' 'Enclave' 'Century' 'Park Avenue' 'LeSabre' 'LaCrosse'
+ 'Rendezvous' 'Regal' 'Encore' 'Envision' 'Riviera' 'Skylark'
+ 'Regal TourX' 'Roadmaster' 'Cascada' 'Rainier' 'Verano' 'Regal Sportback'
+ 'Encore GX' 'Terraza']"
+Cadillac,"['Catera' 'Seville' 'CTS' 'ELR' 'Escalade ESV' 'XT6' 'XT5' 'ATS' 'DeVille'
+ 'CT6-V' 'SRX' 'DTS' 'Escalade' 'XT4' 'Escalade EXT' 'CTS-V' 'Allante'
+ 'ATS-V' 'XTS' 'STS' 'CT5' 'Eldorado' 'XLR' 'CT6' 'Fleetwood' 'Brougham'
+ 'Sixty Special' 'CT4']"
+Chevrolet,"['Express 2500 Cargo' 'Metro' 'Express 2500 Passenger' 'Camaro' 'Blazer'
+ 'Impala' 'Suburban 2500' 'Uplander Cargo' 'Traverse'
+ 'Silverado 3500 HD Regular Cab' 'City Express' 'Astro Cargo'
+ 'Venture Passenger' 'Lumina' 'Express 1500 Passenger' 'Monte Carlo'
+ 'S10 Regular Cab' 'Silverado 2500 HD Crew Cab' '2500 HD Extended Cab'
+ 'TrailBlazer' 'Beretta' 'Impala Limited' 'Avalanche' 'Suburban'
+ 'Astro Passenger' 'Tahoe' 'Equinox' 'Volt' 'Spark' 'Colorado Crew Cab'
+ 'Malibu' 'Avalanche 2500' 'Corvette' 'Silverado 1500 Crew Cab'
+ 'Lumina Passenger' 'Silverado 1500 Regular Cab'
+ 'Silverado 3500 HD Extended Cab' 'Silverado 1500 Double Cab'
+ 'Silverado (Classic) 1500 Extended Cab' 'Prizm' 'APV Cargo'
+ '3500 Crew Cab' 'Express 3500 Cargo' 'Lumina Cargo' 'S10 Crew Cab' 'Trax'
+ 'Colorado Regular Cab' 'Bolt EV' '3500 Extended Cab' 'Uplander Passenger'
+ 'Silverado 2500 Regular Cab' 'Express 3500 Passenger'
+ 'Express 1500 Cargo' 'Avalanche 1500' 'Silverado 1500 Extended Cab'
+ 'Silverado 3500 HD Crew Cab' 'Cavalier' 'G-Series G30'
+ 'Silverado 2500 HD Extended Cab' 'Silverado 3500 Regular Cab'
+ 'Lumina APV' 'Sportvan G30' 'Suburban 3500HD'
+ 'Silverado (Classic) 1500 Crew Cab' 'Silverado 2500 HD Double Cab'
+ 'S10 Extended Cab' 'Suburban 1500' '2500 Extended Cab'
+ 'Colorado Extended Cab' 'Cruze' '3500 Regular Cab' 'HHR'
+ 'Silverado 3500 Crew Cab' 'SS' '2500 Regular Cab' 'Sonic' 'G-Series G10'
+ 'SSR' 'Silverado 2500 Crew Cab' 'Caprice Classic' 'Captiva Sport'
+ '1500 Regular Cab' 'Silverado 3500 HD Double Cab' 'Cobalt'
+ 'Silverado (Classic) 2500 HD Extended Cab' 'Caprice' '2500 Crew Cab'
+ '1500 Extended Cab' '3500 HD Regular Cab' 'G-Series 2500'
+ 'Silverado 3500 Extended Cab' 'Silverado (Classic) 1500 HD Crew Cab'
+ 'Sportvan G10' 'Tracker' 'Sportvan G20' 'Silverado 2500 Extended Cab'
+ 'Venture Cargo' '3500 HD Extended Cab' 'Silverado 2500 HD Regular Cab'
+ 'Aveo' 'Corsica' 'Silverado 1500 HD Crew Cab'
+ 'Silverado (Classic) 2500 HD Crew Cab' 'Silverado 1500 LD Double Cab'
+ 'G-Series G20' 'S10 Blazer' 'G-Series 3500' 'Spark EV'
+ 'Silverado (Classic) 3500 Crew Cab' '2500 HD Regular Cab'
+ 'Silverado (Classic) 3500 Regular Cab' 'Cruze Limited' 'Trailblazer'
+ 'Classic' 'Silverado (Classic) 2500 HD Regular Cab' 'Malibu Limited'
+ 'Silverado (Classic) 1500 Regular Cab'
+ 'Silverado (Classic) 3500 Extended Cab' 'Tahoe (New)' 'Malibu (Classic)'
+ 'G-Series 1500']"
+Chrysler,"['New Yorker' 'Concorde' '300' 'LHS' 'Crossfire' 'Sebring' 'Pacifica'
+ 'Town & Country' 'Cirrus' '300M' 'Voyager' 'PT Cruiser' '200' 'Fifth Ave'
+ 'Prowler' 'Pacifica Hybrid' 'Aspen' 'LeBaron' 'Imperial' 'Grand Voyager']"
+Daewoo,['Nubira' 'Lanos' 'Leganza']
+Daihatsu,['Rocky' 'Charade']
+Dodge,"['Ram 1500 Crew Cab' 'Grand Caravan Passenger' 'Dakota Regular Cab'
+ 'Avenger' 'Durango' 'Dakota Quad Cab' 'Ram 3500 Regular Cab'
+ 'Ram Van 1500' 'Ram 1500 Mega Cab' 'Viper' 'Grand Caravan Cargo'
+ 'Stealth' 'Dynasty' 'Ram Wagon 3500' 'Caravan Passenger'
+ 'Ram 1500 Regular Cab' 'Spirit' 'Caravan Cargo' 'Charger' 'Stratus'
+ 'Neon' 'Intrepid' 'Ram 2500 Quad Cab' 'Ram Van B150' 'Ram 1500 Club Cab'
+ 'Ram 3500 Quad Cab' 'Ram 1500 Quad Cab' 'Ram Van 2500' 'Ramcharger'
+ 'D250 Club Cab' 'D150 Regular Cab' 'Ram 3500 Club Cab' 'Dakota Club Cab'
+ 'Ram 2500 Mega Cab' 'Challenger' 'Sprinter 3500 Cargo' 'Ram Wagon 2500'
+ 'Sprinter 2500 Cargo' 'Nitro' 'Ram Van 3500' 'Ram 50 Regular Cab'
+ 'Journey' 'Ram 3500 Mega Cab' 'Sprinter 2500 Passenger' 'Ram Van B250'
+ 'Caliber' 'Colt' 'Ram 2500 Regular Cab' 'Ram 2500 Club Cab' 'Dart'
+ 'Ram Wagon B150' 'D350 Club Cab' 'Ram Wagon B350' 'D250 Regular Cab'
+ 'Daytona' 'D150 Club Cab' 'Ram 2500 Crew Cab' 'D350 Regular Cab'
+ 'Ram Wagon 1500' 'Shadow' 'Dakota Extended Cab' 'Magnum'
+ 'Dakota Crew Cab' 'Ram Van B350' 'Ram Wagon B250' 'Ram 3500 Crew Cab'
+ 'Monaco']"
+Eagle,['Vision' 'Summit' 'Talon' 'Premier']
+FIAT,['500e' '500X' '500' '500L' '124 Spider' '500c Abarth' '500 Abarth' '500c']
+Ferrari,"['599 GTB Fiorano' 'FF' 'F12berlinetta' '488 GTB' 'F430' 'California'
+ 'GTC4Lusso' '488 Spider' '812 Superfast' '458 Speciale' '458 Spider'
+ '612 Scaglietti' '458 Italia' '430 Scuderia' '599 GTO' 'Portofino']"
+Fisker,['Karma']
+Ford,"['Mustang' 'Taurus' 'Crown Victoria' 'Club Wagon' 'F150 Super Cab' 'Flex'
+ 'F150 Regular Cab' 'E150 Cargo' 'Focus' 'Expedition' 'Ranger Super Cab'
+ 'F250 Super Duty Regular Cab' 'F250 Super Duty Super Cab'
+ 'F450 Super Duty Crew Cab' 'F350 Super Cab' 'Escape' 'Escort'
+ 'Econoline E350 Super Duty Passenger' 'Edge' 'Ranger SuperCrew'
+ 'Transit 250 Van' 'E250 Super Duty Cargo' 'Thunderbird' 'EcoSport'
+ 'C-MAX Hybrid' 'Fiesta' 'Aerostar Cargo' 'Transit Connect Passenger' 'GT'
+ 'Transit 150 Van' 'F350 Super Duty Regular Cab'
+ 'E350 Super Duty Passenger' 'F350 Super Duty Crew Cab'
+ 'Econoline E350 Cargo' 'Fusion Energi' 'Windstar Cargo'
+ 'F250 Super Duty Crew Cab' 'Explorer Sport Trac' 'F150 SuperCrew Cab'
+ 'Contour' 'Econoline E150 Cargo' 'F350 Super Duty Super Cab' 'Explorer'
+ 'Transit Connect Cargo' 'Transit 150 Wagon'
+ 'Econoline E350 Super Duty Cargo' 'E350 Super Duty Cargo'
+ 'Freestar Cargo' 'Windstar Passenger' 'Freestar Passenger'
+ 'F250 Regular Cab' 'Ranger Regular Cab' 'E150 Passenger'
+ 'Transit 350 Van' 'Transit 350 Wagon' 'Transit 350 HD Van'
+ 'F350 Crew Cab' 'Transit Connect Cargo Van' 'Econoline E250 Cargo' 'ZX2'
+ 'Probe' 'Excursion' 'Fusion' 'E150 Super Duty Cargo' 'Aspire' 'Freestyle'
+ 'E150 Super Duty Passenger' 'C-MAX Energi' 'F150 (Heritage) Super Cab'
+ 'Tempo' 'F250 Super Cab' 'Expedition EL' 'Bronco' 'Aerostar Passenger'
+ 'E250 Cargo' 'F350 Regular Cab' 'Five Hundred' 'Focus ST'
+ 'Explorer Sport' 'Expedition MAX' 'Festiva' 'Bronco Sport'
+ 'Econoline E150 Passenger' 'Taurus X' 'Ranger SuperCab'
+ 'F150 (Heritage) Regular Cab' 'F250 Crew Cab']"
+Freightliner,"['Sprinter 2500 Cargo' 'Sprinter WORKER Cargo' 'Sprinter 2500 Passenger'
+ 'Sprinter 2500 Crew' 'Sprinter 3500XD Cargo' 'Sprinter 3500 Cargo'
+ 'Sprinter WORKER Passenger']"
+GMC,"['Savana 1500 Passenger' 'Sierra 2500 HD Extended Cab' 'Safari Passenger'
+ 'Terrain' 'Sierra 1500 Regular Cab' 'Sonoma Crew Cab' 'Yukon'
+ 'Savana 3500 Passenger' 'Sierra 2500 HD Crew Cab' 'Acadia'
+ 'Rally Wagon 3500' 'Sierra 3500 HD Regular Cab' '2500 Club Coupe'
+ 'Sierra 1500 Crew Cab' 'Sierra 3500 HD Crew Cab' '1500 Regular Cab'
+ '1500 Club Coupe' 'Vandura 3500' 'Yukon XL 1500'
+ 'Sierra 3500 Regular Cab' 'Savana 3500 Cargo'
+ 'Sierra 3500 HD Extended Cab' 'Yukon XL' 'Yukon XL 2500'
+ 'Savana 1500 Cargo' 'Safari Cargo' 'Savana 2500 Passenger'
+ 'Canyon Crew Cab' 'Sierra 2500 HD Regular Cab'
+ 'Sierra 3500 HD Double Cab' 'Envoy XL' 'Sonoma Club Coupe Cab'
+ 'Acadia Limited' 'Sierra 2500 HD Double Cab' 'Sonoma Regular Cab'
+ '3500 Crew Cab' 'Suburban 2500' 'Sierra 1500 HD Crew Cab'
+ 'Canyon Extended Cab' 'Canyon Regular Cab' '3500 Regular Cab'
+ 'Sierra 2500 Regular Cab' 'Vandura 1500' '2500 HD Regular Cab'
+ '2500 Regular Cab' 'Envoy' '3500 Club Coupe' 'Sierra 3500 Extended Cab'
+ 'Suburban 1500' 'Savana 2500 Cargo' 'Sierra (Classic) 3500 Extended Cab'
+ 'Sierra 2500 Crew Cab' 'Sierra 1500 Double Cab' 'Hummer EV'
+ 'Rally Wagon 2500' 'Envoy XUV' 'Vandura G1500' '3500 Extended Cab'
+ 'Jimmy' 'Vandura G3500' 'Vandura 2500' 'Sierra 2500 Extended Cab'
+ 'Sierra 3500 Crew Cab' 'Sierra 1500 Extended Cab'
+ 'Sierra (Classic) 2500 HD Extended Cab' 'Sierra 1500 Limited Double Cab'
+ 'Sierra (Classic) 3500 Regular Cab' '2500 Crew Cab' 'Sonoma Extended Cab'
+ 'Sierra (Classic) 2500 Crew Cab' 'Sierra (Classic) 1500 Extended Cab'
+ 'Sierra (Classic) 3500 Crew Cab' 'Rally Wagon G3500'
+ '2500 HD Extended Cab' 'Rally Wagon 1500'
+ 'Sierra (Classic) 2500 HD Regular Cab' 'Vandura G2500'
+ 'Sierra (Classic) 1500 Crew Cab' 'Sierra (Classic) 1500 HD Crew Cab'
+ 'Sierra (Classic) 1500 Regular Cab' 'Rally Wagon G2500'
+ 'Sierra (Classic) 2500 HD Crew Cab' '2500 HD Club Coupe'
+ 'Sonoma Club Cab' 'Yukon Denali']"
+Genesis,['G90' 'G80' 'GV80' 'G70']
+Geo,['Tracker' 'Metro' 'Storm' 'Prizm']
+HUMMER,['H3' 'H1' 'H2' 'H3T']
+Honda,"['HR-V' 'Accord' 'Passport' 'Insight' 'CR-V' 'Civic' 'Prelude' 'Crosstour'
+ 'Ridgeline' 'Pilot' 'CR-Z' 'Accord Crosstour' 'Accord Hybrid' 'del Sol'
+ 'Odyssey' 'Fit' 'Clarity Fuel Cell' 'Clarity Electric' 'Element' 'S2000'
+ 'CR-V Hybrid' 'Clarity Plug-in Hybrid' 'Civic Type R']"
+Hyundai,"['Santa Fe Sport' 'Elantra' 'Sonata' 'Tiburon' 'Azera' 'Accent' 'Tucson'
+ 'Santa Fe' 'Veloster' 'Genesis' 'Veracruz' 'Elantra GT' 'NEXO' 'Excel'
+ 'Kona' 'Scoupe' 'Entourage' 'Sonata Plug-in Hybrid' 'Genesis Coupe'
+ 'Ioniq Plug-in Hybrid' 'Santa Fe XL' 'Sonata Hybrid' 'Equus' 'XG350'
+ 'Ioniq Electric' 'Tucson Fuel Cell' 'Palisade' 'Kona Electric' 'XG300'
+ 'Ioniq Hybrid' 'Venue']"
+INFINITI,"['QX' 'QX70' 'QX60' 'G' 'Q' 'QX80' 'EX' 'J' 'I' 'FX' 'Q70' 'QX50' 'Q50'
+ 'M' 'Q60' 'QX30' 'Q40' 'JX']"
+Isuzu,"['Ascender' 'Trooper' 'VehiCROSS' 'Rodeo Sport' 'Oasis'
+ 'Hombre Regular Cab' 'Axiom' 'Stylus' 'Rodeo' 'i-280 Extended Cab'
+ 'Amigo' 'Spacecab' 'Hombre Spacecab' 'Impulse' 'i-370 Crew Cab'
+ 'i-350 Crew Cab' 'i-370 Extended Cab' 'Regular Cab' 'i-290 Extended Cab']"
+Jaguar,['F-PACE' 'XJ' 'XK' 'XF' 'X-Type' 'S-Type' 'E-PACE' 'F-TYPE' 'I-PACE' 'XE']
+Jeep,"['Wrangler' 'Grand Cherokee' 'Patriot' 'Liberty' 'Renegade'
+ 'Grand Cherokee L' 'Compass' 'Wrangler Unlimited' 'Grand Wagoneer'
+ 'Cherokee' 'Commander' 'Gladiator' 'Comanche Regular Cab']"
+Kia,"['Rondo' 'Soul EV' 'Rio' 'Sedona' 'Amanti' 'Spectra' 'Forte' 'Stinger'
+ 'Optima' 'Telluride' 'Niro EV' 'Forte5' 'Soul' 'Sorento' 'Niro' 'Cadenza'
+ 'Optima Hybrid' 'Sportage' 'K900' 'Optima Plug-in Hybrid' 'K5' 'Sephia'
+ 'Borrego' 'Optima (2006.5)' 'Forte Koup' 'Niro Plug-in Hybrid' 'Seltos']"
+Lamborghini,['Gallardo' 'Huracan' 'Aventador' 'Murcielago' 'Murcielago LP640']
+Land Rover,"['LR4' 'LR3' 'Discovery' 'Range Rover Sport' 'Range Rover Velar'
+ 'Range Rover' 'LR2' 'Range Rover Evoque' 'Discovery Sport' 'Defender 90'
+ 'Discovery Series II' 'Freelander' 'Defender 110']"
+Lexus,"['ES' 'SC' 'LX' 'LS' 'CT' 'GS' 'GX' 'LC' 'IS F' 'IS' 'RX' 'HS' 'UX' 'RC'
+ 'NX' 'LFA']"
+Lincoln,"['Navigator' 'Mark VIII' 'MKZ' 'Zephyr' 'LS' 'MKX' 'Navigator L' 'MKC'
+ 'Continental' 'MKT' 'Nautilus' 'Town Car' 'Aviator' 'MKS' 'Mark LT'
+ 'Corsair' 'Blackwood' 'Mark VII']"
+Lotus,['Exige' 'Elise' 'Evora' 'Evora 400' 'Exige S']
+MAZDA,"['MAZDA3' 'B-Series Regular Cab' 'Millenia' 'Protege' 'CX-3' 'CX-9'
+ 'Tribute' 'Navajo' 'MX-3' '323' 'B-Series Cab Plus' 'MPV' '626' 'MAZDA6'
+ 'CX-5' 'MX-6' 'MX-5 Miata' 'MAZDA5' 'RX-8' 'CX-7' 'B-Series Extended Cab'
+ 'MX-5 Miata RF' 'CX-30' 'MAZDA2' 'RX-7' 'Protege5' '929']"
+MINI,"['Roadster' 'Convertible' 'Countryman' 'Hardtop' 'Clubman'
+ 'Hardtop 2 Door' 'Hardtop 4 Door' 'Paceman' 'Cooper' 'Coupe']"
+Maserati,['Coupe' 'Ghibli' 'Quattroporte' 'GranTurismo' 'Levante' 'GranSport']
+Maybach,['62' '57']
+McLaren,['MP4-12C' '570S' '675LT' '650S' '720S' '570GT']
+Mercedes-Benz,"['Metris WORKER Cargo' 'CLK-Class' 'Sprinter 3500 XD Cargo'
+ 'Metris WORKER Passenger' 'G-Class' 'GLK-Class' '300 E' 'SLS-Class' 'GLA'
+ 'E-Class' 'CLA-Class' 'CLA' '400 E' 'S-Class' 'R-Class' 'CLS' 'GLC'
+ 'M-Class' 'Mercedes-AMG SL' 'Sprinter 2500 Cargo' 'C-Class'
+ 'Metris Passenger' 'Sprinter 2500 Crew' 'SLK-Class' 'GL-Class' '300 CE'
+ 'Mercedes-AMG GLE' 'Mercedes-AMG SLC' 'Mercedes-AMG E-Class'
+ 'Mercedes-AMG GLA' 'CLS-Class' '300 SL' '600 SL' 'Sprinter 3500 Cargo'
+ 'SL-Class' 'Sprinter 2500 Passenger' 'Mercedes-AMG CLA' 'SLR McLaren'
+ '600 SEC' 'Mercedes-AMG G-Class' 'CL-Class' 'Mercedes-AMG S-Class'
+ 'Mercedes-AMG GLC' 'GLE' '600 SEL' '400 SEL' 'GLC Coupe' '500 SEL'
+ 'Mercedes-Maybach S-Class' 'SL' '300 D' 'Mercedes-AMG GLE Coupe' '300 SE'
+ 'Mercedes-AMG GLC Coupe' '300 TE' 'Mercedes-Maybach S 600' '190 E'
+ 'Sprinter WORKER Cargo' 'B-Class' 'GLS' '500 SEC' 'SLK' 'GLE Coupe'
+ 'Mercedes-AMG GT' 'SLC' 'Mercedes-AMG GLS' 'GLB' 'GLA-Class' 'A-Class'
+ '300 SD' 'Sprinter WORKER Passenger' 'Mercedes-AMG C-Class' '500 SL'
+ '400 SE' '500 E' 'Mercedes-AMG CLS' 'Metris Cargo' 'Mercedes-AMG SLK']"
+Mercury,"['Sable' 'Grand Marquis' 'Topaz' 'Villager' 'Milan' 'Montego' 'Mariner'
+ 'Tracer' 'Mountaineer' 'Mystique' 'Cougar' 'Capri' 'Marauder' 'Monterey']"
+Mitsubishi,"['Raider Double Cab' 'Galant' 'Outlander Sport' 'Raider Extended Cab'
+ 'Outlander PHEV' 'Precis' 'Montero Sport' 'Diamante' 'Outlander' 'Mirage'
+ 'Eclipse' 'Mirage G4' 'i-MiEV' 'Montero' 'Lancer' 'Mighty Max Macro Cab'
+ 'Endeavor' 'Mighty Max Regular Cab' 'Lancer Evolution' 'Eclipse Cross'
+ '3000GT' 'Expo']"
+Nissan,"['LEAF' 'NV3500 HD Cargo' 'NV1500 Cargo' 'Maxima' 'Frontier King Cab'
+ 'Titan King Cab' 'NV2500 HD Cargo' '200SX' 'Regular Cab' 'Quest'
+ 'TITAN XD King Cab' 'Pathfinder' 'Titan Crew Cab' 'Sentra' 'Armada'
+ 'King Cab' 'Xterra' 'NV200 Taxi' '370Z' 'NV3500 HD Passenger' 'Versa'
+ 'NV200' 'Frontier Crew Cab' '300ZX' 'Murano' 'GT-R' 'Altima' '240SX'
+ 'TITAN XD Crew Cab' 'JUKE' 'Stanza' '350Z' 'Rogue Select' 'Rogue'
+ 'Versa Note' 'Frontier Regular Cab' 'cube' 'TITAN Single Cab' 'NX'
+ 'Rogue Sport' 'Pathfinder Armada' 'Kicks' 'TITAN XD Single Cab']"
+Oldsmobile,"['Achieva' 'Silhouette' '98' 'Bravada' 'Alero' 'Cutlass Supreme' 'LSS'
+ 'Aurora' 'Cutlass Ciera' '88' 'Cutlass Cruiser' 'Ciera' 'Intrigue'
+ 'Cutlass' 'Toronado' 'Regency' 'Custom Cruiser']"
+Panoz,['Esperante']
+Plymouth,"['Prowler' 'Acclaim' 'Grand Voyager' 'Neon' 'Sundance' 'Voyager' 'Laser'
+ 'Breeze' 'Colt' 'Colt Vista']"
+Polestar,['2']
+Pontiac,"['G8' 'Sunfire' 'Grand Am' 'GTO' 'Firebird' 'Trans Sport' 'Vibe'
+ 'Bonneville' 'G6' 'Torrent' 'Grand Prix' 'Montana' 'Sunbird' 'Aztek'
+ 'LeMans' 'G5' 'G3' 'G6 (2009.5)' 'Solstice' 'Montana SV6']"
+Porsche,"['Boxster' 'Panamera' 'Macan' '911' 'Cayenne' 'Cayman' 'Carrera GT'
+ '718 Boxster' 'Taycan' '968' '928' 'Cayenne Coupe' '718 Cayman'
+ '718 Spyder']"
+Ram,"['3500 Crew Cab' '3500 Mega Cab' '2500 Regular Cab' '3500 Regular Cab'
+ '2500 Mega Cab' '1500 Regular Cab' 'C/V Tradesman' '1500 Quad Cab'
+ '2500 Crew Cab' '1500 Crew Cab' 'ProMaster City' 'C/V'
+ 'ProMaster 1500 Cargo' 'Dakota Extended Cab' 'ProMaster Window Van'
+ 'ProMaster Cargo Van' 'Dakota Crew Cab' '1500 Classic Crew Cab'
+ '1500 Classic Quad Cab' 'ProMaster 3500 Cargo' '1500 Classic Regular Cab'
+ 'ProMaster 2500 Cargo']"
+Rivian,['R1T' 'R1S']
+Rolls-Royce,['Ghost' 'Phantom' 'Wraith' 'Dawn']
+SRT,['Viper']
+Saab,['900' '05-Sep' '9-7X' '03-Sep' '9000' '9-2X' '9-4X']
+Saturn,['Aura' 'S-Series' 'L-Series' 'VUE' 'Outlook' 'Relay' 'Ion' 'SKY' 'Astra']
+Scion,['xB' 'xD' 'iQ' 'tC' 'iM' 'FR-S' 'iA' 'xA']
+Subaru,"['Legacy' 'Baja' 'Tribeca' 'Forester' 'Impreza' 'WRX' 'SVX' 'Outback'
+ 'BRZ' 'XV Crosstrek' 'Loyale' 'Justy' 'Crosstrek' 'B9 Tribeca' 'Ascent']"
+Suzuki,"['Forenza' 'Vitara' 'Grand Vitara' 'Samurai' 'Reno' 'Verona' 'Sidekick'
+ 'Aerio' 'Esteem' 'XL-7' 'X-90' 'SX4' 'Equator Crew Cab'
+ 'Equator Extended Cab' 'Swift' 'Kizashi' 'XL7']"
+Tesla,['Model S' 'Model X' 'Model 3']
+Toyota,"['Sequoia' 'Camry' 'Yaris' 'Tacoma Double Cab' 'Xtra Cab' 'RAV4' 'Avalon'
+ 'Tercel' 'Prius' 'Highlander' 'Tacoma Xtracab' 'Tundra Regular Cab'
+ 'Corolla iM' 'T100 Xtracab' '4Runner' 'Sienna' 'RAV4 Hybrid' 'Corolla'
+ 'Tacoma Access Cab' 'Matrix' 'Land Cruiser' 'Regular Cab'
+ 'Tacoma Regular Cab' 'Previa' 'Venza' 'Supra' 'Yaris Hatchback'
+ 'Tundra Double Cab' 'Tundra CrewMax' '86' 'Echo' 'Prius Prime' 'GR Supra'
+ 'Celica' 'MR2' 'Mirai' 'FJ Cruiser' 'Prius v' 'C-HR'
+ 'Prius Plug-in Hybrid' 'Prius c' 'RAV4 Prime' 'Camry Hybrid' 'Solara'
+ 'Highlander Hybrid' 'Paseo' 'Tundra Access Cab' 'Yaris iA'
+ 'T100 Regular Cab' 'Avalon Hybrid' 'Corolla Hatchback' 'Corolla Hybrid'
+ 'Cressida']"
+Volkswagen,"['Passat' 'Eos' 'Atlas Cross Sport' 'GTI' 'Golf SportWagen' 'Touareg'
+ 'Tiguan' 'Golf Alltrack' 'Jetta' 'Fox' 'Passat (New)' 'Golf' 'Golf GTI'
+ 'CC' 'Cabrio' 'Beetle' 'New Beetle' 'Cabriolet' 'GLI' 'Jetta III'
+ 'Phaeton' 'Jetta GLI' 'Jetta SportWagen' 'Arteon' 'Routan' 'Golf III'
+ 'e-Golf' 'Golf R' 'Cabrio (New)' 'Eurovan' 'Jetta (New)' 'Corrado'
+ 'Tiguan Limited' 'Rabbit' 'Touareg 2' 'R32' 'Atlas' 'GTI (New)'
+ 'Golf (New)']"
+Volvo,"['V70' 'XC70' 'S60' 'S80' 'C70' 'XC40' 'XC90' 'S70' 'S40' 'XC60' 'S90'
+ '240' 'C30' 'V60' '960' 'V90' '940' '740' 'V50' '850' 'V40' 'S40 (New)']"
+smart,"['fortwo electric drive' 'fortwo' 'fortwo cabrio'
+ 'fortwo electric drive cabrio']"

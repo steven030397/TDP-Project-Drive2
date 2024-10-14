@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, session, url_for, flash
+from flask import Flask, jsonify, render_template, request, redirect, session, url_for, flash
+import pandas as pd
 import mysql.connector
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
@@ -245,7 +246,16 @@ def commute():
     return render_template('commute.html')
 
 
+@app.route('/get_makes')
+def get_makes():
+  # Read data from your CSV file using libraries like pandas
+  data = pd.read_csv('car.csv')
 
+  # Convert "Make" column to string if necessary
+  data['Make'] = data['Make'].astype(str)
+
+  makes = list(data['Make'].unique())
+  return jsonify(makes)
 
 
 
