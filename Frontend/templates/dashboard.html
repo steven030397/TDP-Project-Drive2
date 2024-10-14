@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon/favicon-16x16.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - DRIVE2</title>
+    <title>Dashboard - DRIVE2</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
         /* Navigation Pane Styles */
@@ -62,6 +62,90 @@
         .no-match-msg {
             color: #333;
         }
+       /* Main Container for Route Details and Impact Cards */
+        .main-container {
+            display: flex;
+            margin-left: 250px; /* Space for the navigation pane */
+            padding: 20px;
+            padding-top: 80px; /* Space for top bar */
+            background-color: #ffffff;
+            gap: 20px; /* Space between elements */
+        }
+
+        .left-container {
+            color: #333;
+        }
+
+        .route-details {
+            color: #333;
+        }
+
+        .route-stats{
+            color: #333;
+        }
+
+        /* Impact Cards Container (Aside) */
+        .impact-aside {
+            flex: 1; /* Take up less space on the right */
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between cards */
+        }
+
+
+        .impact-card {
+            background-color: #e0f7e4;
+            border-radius: 20px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+        }
+
+        .impact-card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #0e4646;
+        }
+
+        .impact-card p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .impact-card .impact-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #0f9d58;
+        }
+
+        .impact-card .sub-value {
+            font-size: 18px;
+            color: #0f9d58;
+        }
+
+        .impact-footer {
+            background-color: #f5f5f5;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .impact-footer a {
+            display: block;
+            color: #0f9d58;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .impact-footer a i {
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
@@ -85,11 +169,52 @@
         <a href="{{ url_for('settings') }}">Settings</a>
     </div>
 
+    <div class="main-container">
+        <!-- Left Container -->
+        <div class="left-container">
+            <h3>Quick Summary</h3>
+            <p><strong>Total Trips:</strong> 150</p>
+            <p><strong>Saved Fuel:</strong> 1,234 liters</p>
+            <p><strong>CO2 Reduced:</strong> 2,500 kg</p>
+            <p><a href="#">View more details...</a></p>
+        </div>
+
+        <!-- Route Details -->
+        <div class="route-details">
+            <h2>Your Route Details</h2>
+            <p><strong>Home location:</strong> 123 Random Street, Melbourne</p>
+            <p><strong>Destination:</strong> 321 Office Street, Melbourne</p>
+            <p><strong>Average Travel Distance:</strong> 15 km</p>
+    
+            <div class="route-stats">
+                <p><strong>Fuel Savings:</strong> $50.35 per week</p>
+                <p><strong>CO2 Reduction:</strong> 200 cm³</p>
+            </div>
+        </div>
+  <!-- Impact Cards Section (Aside) -->
+  <aside class="impact-aside">
+    <div class="impact-card">
+        <h2>Fuel Saved</h2>
+        <div class="impact-value">1,324,232</div>
+        <p>Liters of fuel saved by our community.</p>
+        <div class="sub-value">Cost savings: $25,678</div>
+    </div>
+
+    <div class="impact-card">
+        <h2>CO2 Reduction</h2>
+        <div class="impact-value">315,000 kg</div>
+        <p>Total CO2 emissions reduced through fuel efficiency.</p>
+        <div class="sub-value">Equivalent to 450 trees planted</div>
+    </div>
+</aside>
+    </div>
+      
 
 
     <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 DRIVE2. All rights reserved.</p>
     </footer>
+
 </body>
 </html>

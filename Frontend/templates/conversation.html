@@ -6,9 +6,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon/favicon-16x16.png') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - DRIVE2</title>
+    <title>Conversation - DRIVE2</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        
         /* Navigation Pane Styles */
         .navi-pane {
             width: 200px;
@@ -62,34 +64,197 @@
         .no-match-msg {
             color: #333;
         }
+     /* Chat User List */
+     .user-list {
+            width: 150px;
+            height: calc(100vh - 60px);
+            padding: 20px;
+            background-color: #eaeaea;
+            position: fixed;
+            top: 60px;
+            left: 220px; /* Adjust according to side pane width */
+        }
+
+        .user-list div {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .user-list div.selected {
+            background-color: #000000;
+            color: white;
+        }
+
+        /* Main Chat Window */
+        .chat-window {
+            margin-left: 390px; /* 200px (navi) + 200px (user list) + margin */
+            margin-top: 60px;
+            padding: 20px;
+            height: calc(100vh - 60px);
+            background-color: #fff;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .message.self {
+            justify-content: flex-end;
+        }
+
+        .message .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .message.self .avatar {
+            margin-right: 0px;
+            margin-left: 10px;
+        }
+
+        .message .text {
+            background-color: #f1f1f1;
+            padding: 10px 20px;
+            border-radius: 20px;
+            max-width: 300px;
+            word-wrap: break-word;
+        }
+
+        .message.self .text {
+            background-color: #ff5733;
+            color: white;
+        }
+
+        /* Message Input Box */
+        .input-container {
+            display: flex;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-top: 1px solid #ddd;
+        }
+
+        .input-container input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .input-container button {
+            background-color: #ff5733;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .input-container button i {
+            font-size: 18px;
+        }
     </style>
+ <!-- Top Bar -->
+ <header>
+    <div class="topbar">
+        <div class="logo">
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png') }}" alt="DRIVE2 Logo"></a>
+        </div>
+        <nav>
+            <a href="{{ url_for('logout') }}"><button class="nav-button">Log Out</button></a>
+        </nav>
+    </div>
+</header>
+
+<!-- Navigation Pane -->
+<div class="navi-pane">
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('conversation') }}" class="selected">Conversation</a>
+    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+    <a href="{{ url_for('settings') }}">Settings</a>
+</div>    
 </head>
 <body>
-    <!-- Top Bar -->
-    <header>
-        <div class="topbar">
-            <div class="logo">
-                <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png') }}" alt="DRIVE2 Logo"></a>
-            </div>
-            <nav>
-                <a href="{{ url_for('logout') }}"><button class="nav-button">Log Out</button></a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Navigation Pane -->
-    <div class="navi-pane">
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('conversation') }}" class="selected">Conversation</a>
-        <a href="{{ url_for('dashboard') }}">Dashboard</a>
-        <a href="{{ url_for('settings') }}">Settings</a>
+ 
+    <!-- User List -->
+    <div class="user-list">
+        <div class="selected">Alice</div>
+        <div>Bob</div>
     </div>
 
+    <!-- Chat Window -->
+    <div class="chat-window">
+        <!-- Chat messages -->
+        <div class="chat-content">
+            <div class="message">
+                <div class="avatar"></div>
+                <div class="text">Hello, Alice!</div>
+            </div>
+            <div class="message self">
+                <div class="text">Hi there! How are you?</div>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <!-- Message Input -->
+        <div class="input-container">
+            <input type="text" placeholder="Type a message...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+</head>
+<body>
+   
+
+    <div class="chat-container">
+        <div class="chat-box">
+            <div id="messages"></div>
+        </div>
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i> <!-- Paper plane icon -->
+            </button>
+        </div>
+    </div>
 
 
     <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 DRIVE2. All rights reserved.</p>
     </footer>
+    <script>
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const messageText = messageInput.value.trim();
+
+            if (messageText !== '') {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'self');
+                messageElement.innerText = messageText;
+                
+                const messagesContainer = document.getElementById('messages');
+                messagesContainer.appendChild(messageElement);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                // Clear input field after sending message
+                messageInput.value = '';
+            }
+        }
+    </script>
 </body>
 </html>
