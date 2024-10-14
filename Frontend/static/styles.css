@@ -125,19 +125,19 @@ nav {
 }
 
 #section1 {
-    background-image: url('images/istockphoto-1166777293-170667a.webp');
+    background-image: url('images/1.jpg');
 }
 
 #section2 {
-    background-image: url('images/960x0.webp');
+    background-image: url('images/2.jpeg');
 }
 
 #section3 {
-    background-image: url('images/Untitled.jpg');
+    background-image: url('images/3.jpg');
 }
 
 #section4 {
-    background-image: url('images/Untitled-fuel.jpg');
+    background-image: url('images/4.jpeg');
 }
 
 .text-overlay {
@@ -221,7 +221,7 @@ footer {
     padding: 10px;
     text-align: center;
     color: #fff;
-    position: fixed;
+    position:relative;
     width: 100%;
     bottom: 0;
     left: 0;
