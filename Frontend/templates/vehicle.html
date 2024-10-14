@@ -96,7 +96,7 @@
             const vehicleForm = document.createElement('div');
             vehicleForm.classList.add('vehicle-form');
             vehicleForm.innerHTML = `
-                <h3>Vehicle ${i}</h3>
+                <h3>Vehicle ${i}</h3>   ## Just make the input tag have the "datalist" type, with the options being filled at the load of the page by JavaScript after parsing the csv file, then make the model select tag hidden when the make input does not have a valid make
                 <div class="form-group">
                     <label for="brand">Brand:</label>
                     <select name="brand[]">
