@@ -1,0 +1,1058 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20242.24.0711.1636                               -->
+<workbook original-version='18.1' source-build='2024.2.1 (20242.24.0711.1636)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
+  <datasources>
+    <datasource caption='matching_data (drive2_db)' inline='true' name='federated.1rdbefi082tcek0zon1mr0gtrc7m' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='db4free.net' name='mysql.0u6jqe10z52f8i1d19qy91fp5jqa'>
+            <connection class='mysql' dbname='drive2_db' odbc-native-protocol='' one-time-sql='' port='3306' server='db4free.net' source-charset='' username='steven3397' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='mysql.0u6jqe10z52f8i1d19qy91fp5jqa' name='matching_data' table='[matching_data]' type='table' />
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='mysql.0u6jqe10z52f8i1d19qy91fp5jqa' name='matching_data' table='[matching_data]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>match_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[match_id]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>match_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_id_person1</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[user_id_person1]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>user_id_person1</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_id_person2</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[user_id_person2]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>user_id_person2</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>person1_home_lat</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[person1_home_lat]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>person1_home_lat</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>9</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>person1_home_long</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[person1_home_long]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>person1_home_long</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>9</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>person1_destination_lat</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[person1_destination_lat]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>person1_destination_lat</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>9</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>person1_destination_long</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[person1_destination_long]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>person1_destination_long</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>9</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>person2_home_lat</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[person2_home_lat]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>person2_home_lat</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>9</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>person2_home_long</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[person2_home_long]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>person2_home_long</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>9</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>person2_destination_lat</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[person2_destination_lat]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>person2_destination_lat</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>9</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>person2_destination_long</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[person2_destination_long]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>person2_destination_long</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>9</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>distance_between_home</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[distance_between_home]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>distance_between_home</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>7</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>distance_between_destination</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[distance_between_destination]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>distance_between_destination</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>7</precision>
+            <scale>6</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>destination_arrival_diff</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[destination_arrival_diff]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>destination_arrival_diff</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>4</precision>
+            <scale>1</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>destination_departure_diff</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[destination_departure_diff]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>destination_departure_diff</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>4</precision>
+            <scale>1</scale>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>matched_day</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[matched_day]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>matched_day</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>9</width>
+            <contains-null>true</contains-null>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>status</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[status]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>status</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>status_info</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[status_info]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>status_info</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>200</width>
+            <contains-null>true</contains-null>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>driver_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[driver_id]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>driver_id</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>match_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[match_type]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>match_type</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>50</width>
+            <contains-null>true</contains-null>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>match_direction</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[match_direction]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>match_direction</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>6</width>
+            <contains-null>true</contains-null>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>first_match_timestamp</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[first_match_timestamp]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>first_match_timestamp</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>end_match_timestamp</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[end_match_timestamp]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>end_match_timestamp</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>google_actual_distance1</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[google_actual_distance1]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>google_actual_distance1</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <scale>2</scale>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>google_actual_distance2</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[google_actual_distance2]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>google_actual_distance2</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <scale>2</scale>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_DECIMAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_NUMERIC&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>match_quality</remote-name>
+            <remote-type>4</remote-type>
+            <local-name>[match_quality]</local-name>
+            <parent-name>[matching_data]</parent-name>
+            <remote-alias>match_quality</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>6</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_REAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_FLOAT&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[matching_data_7CD159542079421D887149A36FCD5A6C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='matching_data' datatype='table' name='[__tableau_internal_object_id__].[matching_data_7CD159542079421D887149A36FCD5A6C]' role='measure' type='quantitative' />
+      <column caption='Destination Arrival Diff' datatype='real' name='[destination_arrival_diff]' role='measure' type='quantitative' />
+      <column caption='Destination Departure Diff' datatype='real' name='[destination_departure_diff]' role='measure' type='quantitative' />
+      <column caption='Distance Between Destination' datatype='real' name='[distance_between_destination]' role='measure' type='quantitative' />
+      <column caption='Distance Between Home' datatype='real' name='[distance_between_home]' role='measure' type='quantitative' />
+      <column caption='Driver Id' datatype='integer' name='[driver_id]' role='dimension' type='ordinal' />
+      <column caption='End Match Timestamp' datatype='datetime' name='[end_match_timestamp]' role='dimension' type='ordinal' />
+      <column caption='First Match Timestamp' datatype='datetime' name='[first_match_timestamp]' role='dimension' type='ordinal' />
+      <column caption='Google Actual Distance1' datatype='real' name='[google_actual_distance1]' role='measure' type='quantitative' />
+      <column caption='Google Actual Distance2' datatype='real' name='[google_actual_distance2]' role='measure' type='quantitative' />
+      <column caption='Match Direction' datatype='string' name='[match_direction]' role='dimension' type='nominal' />
+      <column caption='Match Id' datatype='integer' name='[match_id]' role='dimension' type='ordinal' />
+      <column caption='Match Quality' datatype='real' name='[match_quality]' role='measure' type='quantitative' />
+      <column caption='Match Type' datatype='string' name='[match_type]' role='dimension' type='nominal' />
+      <column caption='Matched Day' datatype='string' name='[matched_day]' role='dimension' type='nominal' />
+      <column aggregation='Avg' caption='Person1 Destination Lat' datatype='real' name='[person1_destination_lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column caption='Person1 Destination Long' datatype='real' name='[person1_destination_long]' role='measure' type='quantitative' />
+      <column aggregation='Avg' caption='Person1 Home Lat' datatype='real' name='[person1_home_lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column caption='Person1 Home Long' datatype='real' name='[person1_home_long]' role='measure' type='quantitative' />
+      <column aggregation='Avg' caption='Person2 Destination Lat' datatype='real' name='[person2_destination_lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column caption='Person2 Destination Long' datatype='real' name='[person2_destination_long]' role='measure' type='quantitative' />
+      <column aggregation='Avg' caption='Person2 Home Lat' datatype='real' name='[person2_home_lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column caption='Person2 Home Long' datatype='real' name='[person2_home_long]' role='measure' type='quantitative' />
+      <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
+      <column caption='Status Info' datatype='string' name='[status_info]' role='dimension' type='nominal' />
+      <column aggregation='Sum' caption='User Id Person1' datatype='integer' name='[user_id_person1]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='User Id Person2' datatype='integer' name='[user_id_person2]' role='dimension' type='ordinal' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Australia&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='matching_data' id='matching_data_7CD159542079421D887149A36FCD5A6C'>
+            <properties context=''>
+              <relation connection='mysql.0u6jqe10z52f8i1d19qy91fp5jqa' name='matching_data' table='[matching_data]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Match Quality'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matching_data (drive2_db)' name='federated.1rdbefi082tcek0zon1mr0gtrc7m' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1rdbefi082tcek0zon1mr0gtrc7m'>
+            <column-instance column='[match_quality]' derivation='Avg' name='[avg:match_quality:qk]' pivot='key' type='quantitative' />
+            <column caption='Match Direction' datatype='string' name='[match_direction]' role='dimension' type='nominal' />
+            <column caption='Match Quality' datatype='real' name='[match_quality]' role='measure' type='quantitative' />
+            <column caption='Match Type' datatype='string' name='[match_type]' role='dimension' type='nominal' />
+            <column caption='Matched Day' datatype='string' name='[matched_day]' role='dimension' type='nominal' />
+            <column-instance column='[match_direction]' derivation='None' name='[none:match_direction:nk]' pivot='key' type='nominal' />
+            <column-instance column='[match_type]' derivation='None' name='[none:match_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[matched_day]' derivation='None' name='[none:matched_day:nk]' pivot='key' type='nominal' />
+            <column-instance column='[status]' derivation='None' name='[none:status:nk]' pivot='key' type='nominal' />
+            <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[avg:match_quality:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <encodings>
+              <color column='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[avg:match_quality:qk]' />
+              <text column='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[avg:match_quality:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='has-stroke' value='false' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:match_type:nk] / ([federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:status:nk] / [federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:match_direction:nk]))</rows>
+        <cols>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:matched_day:nk]</cols>
+      </table>
+      <simple-id uuid='{86509877-85FD-4871-9026-B03A940A9324}' />
+    </worksheet>
+    <worksheet name='Match day'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matching_data (drive2_db)' name='federated.1rdbefi082tcek0zon1mr0gtrc7m' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1rdbefi082tcek0zon1mr0gtrc7m'>
+            <column-instance column='[match_id]' derivation='Count' name='[cnt:match_id:qk]' pivot='key' type='quantitative' />
+            <column caption='Match Id' datatype='integer' name='[match_id]' role='dimension' type='ordinal' />
+            <column caption='Match Type' datatype='string' name='[match_type]' role='dimension' type='nominal' />
+            <column caption='Matched Day' datatype='string' name='[matched_day]' role='dimension' type='nominal' />
+            <column-instance column='[match_type]' derivation='None' name='[none:match_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[matched_day]' derivation='None' name='[none:matched_day:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:matched_day:nk]' value='117' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:match_type:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[cnt:match_id:qk]</rows>
+        <cols>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:matched_day:nk]</cols>
+      </table>
+      <simple-id uuid='{CE9D222E-A890-434C-8780-959323917784}' />
+    </worksheet>
+    <worksheet name='location &amp; distance'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matching_data (drive2_db)' name='federated.1rdbefi082tcek0zon1mr0gtrc7m' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1rdbefi082tcek0zon1mr0gtrc7m'>
+            <column caption='Distance Between Home' datatype='real' name='[distance_between_home]' role='measure' type='quantitative' />
+            <column caption='Match Quality' datatype='real' name='[match_quality]' role='measure' type='quantitative' />
+            <column caption='Match Type' datatype='string' name='[match_type]' role='dimension' type='nominal' />
+            <column-instance column='[match_type]' derivation='None' name='[none:match_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[person1_home_lat]' derivation='None' name='[none:person1_home_lat:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[person1_home_long]' derivation='None' name='[none:person1_home_long:qk]' pivot='key' type='quantitative' />
+            <column aggregation='Avg' caption='Person1 Home Lat' datatype='real' name='[person1_home_lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column caption='Person1 Home Long' datatype='real' name='[person1_home_long]' role='measure' type='quantitative' />
+            <column-instance column='[distance_between_home]' derivation='Sum' name='[sum:distance_between_home:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[match_quality]' derivation='Sum' name='[sum:match_quality:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane id='7' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[sum:match_quality:qk]' />
+              <shape column='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:match_type:nk]' />
+              <size column='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[sum:distance_between_home:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:person1_home_lat:qk]</rows>
+        <cols>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:person1_home_long:qk]</cols>
+      </table>
+      <simple-id uuid='{F745F9E8-1947-40F0-AC57-A5C3E328D07D}' />
+    </worksheet>
+  </worksheets>
+  <windows saved-dpi-scale-factor='1.25' source-height='37'>
+    <window class='worksheet' name='Match Quality'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[avg:match_quality:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:match_direction:nk]</field>
+            <field>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:match_type:nk]</field>
+            <field>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:matched_day:nk]</field>
+            <field>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:status:nk]</field>
+            <field>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:status_info:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{6062D1FC-B2D5-49CF-95AA-806B204515D3}' />
+    </window>
+    <window class='worksheet' name='location &amp; distance'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='7' param='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[sum:distance_between_home:qk]' type='size' />
+            <card pane-specification-id='7' param='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:match_type:nk]' type='shape' />
+            <card pane-specification-id='7' param='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[sum:match_quality:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:match_type:nk]</field>
+            <field>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:matched_day:nk]</field>
+            <field>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:person1_home_long:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{677E9366-0F34-4B2B-90FF-D0D4A84B93AE}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Match day'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:match_type:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:match_id:ok]</field>
+            <field>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:match_type:nk]</field>
+            <field>[federated.1rdbefi082tcek0zon1mr0gtrc7m].[none:matched_day:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{AE7CD673-3FED-4CCE-AF8B-70806317C08D}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='86' name='Match Quality' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Match day' width='192'>
+      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
+      UQxKFw5oAAAAAElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='location &amp; distance' width='192'>
+      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
+      HbYAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
