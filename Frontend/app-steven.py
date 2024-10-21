@@ -385,12 +385,52 @@ def logout():
 @app.route('/home' ,methods=['GET', 'POST'])
 def home():
 
-    return render_template("home.html") 
+    conn = mysql.connector.connect(
+            host = "db4free.net",
+            port="3306",
+            user="steven3397",
+            password = "pass123word", 
+            database="drive2_db")
+    cursor = conn.cursor()
 
+
+    my_id = session["user_id"]
+    cursor.execute("SELECT user_id_person2, matched_day FROM matching_data WHERE user_id_person1 = %s", (my_id, ))
+    id_of_your_match = cursor.fetchall()
+    # Separate the data into two lists or sets of variables
+    user_ids = [match[0] for match in id_of_your_match]  # List of all user_id_person2
+    match_days = [match[1] for match in id_of_your_match]  # List of all matched_day
+
+    # Store them separately in session
+    session["MATCH_USER_IDS"] = user_ids
+    session["MATCH_DAYS"] = match_days
+
+    cursor.execute("SELECT user_id_person1, matched_day FROM matching_data WHERE user_id_person2 = %s",(my_id, ))
+    id_of_your_match = cursor.fetchall()
+    session["MATCH_TEST2"] = id_of_your_match
+
+    cursor.execute("""SELECT users.username , gender 
+    FROM matching_data 
+    JOIN users ON matching_data.user_id_person2 = users.user_id 
+    WHERE matching_data.user_id_person1 = %s""", (my_id, ))
+    name_your_match = cursor.fetchall()
+    session["NAME_TEST"] = name_your_match
+
+    cursor.execute("""SELECT users.username , gender 
+    FROM matching_data 
+    JOIN users ON matching_data.user_id_person1 = users.user_id 
+    WHERE matching_data.user_id_person2 = %s""", (my_id, ))
+    name_your_match = cursor.fetchall()
+    session["NAME_TEST2"] = name_your_match
+
+    return render_template("home.html")
+
+   
 @app.route('/conversation' ,methods=['GET', 'POST'])
 def conversation():
     return render_template("conversation.html") 
 
+ 
 @app.route('/settings' ,methods=['GET', 'POST'])
 def settings():
     return render_template("settings.html") 

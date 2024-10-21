@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         
-        /* Navigation Pane Styles */
         .navi-pane {
             width: 200px;
             height: calc(100vh - 60px); /* Adjust according to header height */
@@ -64,8 +63,9 @@
         .no-match-msg {
             color: #333;
         }
-     /* Chat User List */
-     .user-list {
+        
+        /* Chat User List */
+        .user-list {
             width: 150px;
             height: calc(100vh - 60px);
             padding: 20px;
@@ -167,38 +167,38 @@
             font-size: 18px;
         }
     </style>
- <!-- Top Bar -->
- <header>
-    <div class="topbar">
-        <div class="logo">
-            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png') }}" alt="DRIVE2 Logo"></a>
-        </div>
-        <nav>
-            <a href="{{ url_for('logout') }}"><button class="nav-button">Log Out</button></a>
-        </nav>
-    </div>
-</header>
-
-<!-- Navigation Pane -->
-<div class="navi-pane">
-    <a href="{{ url_for('home') }}">Home</a>
-    <a href="{{ url_for('conversation') }}" class="selected">Conversation</a>
-    <a href="{{ url_for('dashboard') }}">Dashboard</a>
-    <a href="{{ url_for('settings') }}">Settings</a>
-</div>    
 </head>
 <body>
- 
+    <!-- Top Bar -->
+    <header>
+        <div class="topbar">
+            <div class="logo">
+                <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/D2.png') }}" alt="DRIVE2 Logo"></a>
+            </div>
+            <nav>
+                <a href="{{ url_for('logout') }}"><button class="nav-button">Log Out</button></a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Navigation Pane -->
+    <div class="navi-pane">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('conversation') }}" class="selected">Conversation</a>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('settings') }}">Settings</a>
+    </div>    
+
     <!-- User List -->
     <div class="user-list">
-        <div class="selected">Alice</div>
-        <div>Bob</div>
+        <div class="selected">{{session['NAME_TEST']}}</div>
+        <div><a href="{{ url_for('conversation') }}">{{session['NAME_TEST2']}}</a></div>
     </div>
 
     <!-- Chat Window -->
     <div class="chat-window">
         <!-- Chat messages -->
-        <div class="chat-content">
+        <div id="messages" class="chat-content">
             <div class="message">
                 <div class="avatar"></div>
                 <div class="text">Hello, Alice!</div>
@@ -211,42 +211,49 @@
 
         <!-- Message Input -->
         <div class="input-container">
-            <input type="text" placeholder="Type a message...">
-            <button><i class="fas fa-paper-plane"></i></button>
+            <input type="text" id="messageInput" placeholder="Type a message...">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
-
-</head>
-<body>
-   
-
-    <div class="chat-container">
-        <div class="chat-box">
-            <div id="messages"></div>
-        </div>
-        <div class="input-container">
-            <input type="text" id="messageInput" placeholder="Type your message...">
-            <button onclick="sendMessage()">
-                <i class="fas fa-paper-plane"></i> <!-- Paper plane icon -->
-            </button>
-        </div>
-    </div>
-
 
     <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 DRIVE2. All rights reserved.</p>
     </footer>
+    
     <script>
         function sendMessage() {
             const messageInput = document.getElementById('messageInput');
             const messageText = messageInput.value.trim();
 
             if (messageText !== '') {
+                // Create message element
                 const messageElement = document.createElement('div');
                 messageElement.classList.add('message', 'self');
-                messageElement.innerText = messageText;
-                
+
+                // Create text element
+                const textElement = document.createElement('div');
+                textElement.classList.add('text');
+                textElement.innerText = messageText;
+
+                // Create avatar element
+                const avatarElement = document.createElement('div');
+                avatarElement.classList.add('avatar');
+
+                // Create reaction buttons
+                const reactionButtons = document.createElement('div');
+                reactionButtons.classList.add('reaction-buttons');
+                reactionButtons.innerHTML = `
+                    <button onclick="replyToMessage('${messageText}')"><i class="fas fa-thumbs-up"></i></button>
+                    <button onclick="replyToMessage('${messageText}')"><i class="fas fa-heart"></i></button>
+                `;
+
+                // Append text, avatar, and reaction buttons to message
+                messageElement.appendChild(textElement);
+                messageElement.appendChild(avatarElement);
+                messageElement.appendChild(reactionButtons);
+
+                // Append message to messages container
                 const messagesContainer = document.getElementById('messages');
                 messagesContainer.appendChild(messageElement);
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
@@ -254,6 +261,12 @@
                 // Clear input field after sending message
                 messageInput.value = '';
             }
+        }
+
+        function replyToMessage(message) {
+            const messageInput = document.getElementById('messageInput');
+            messageInput.value = `Replying to: "${message}"`;
+            messageInput.focus(); // Focus on input field
         }
     </script>
 </body>

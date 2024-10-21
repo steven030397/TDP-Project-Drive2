@@ -13,7 +13,7 @@
         .navi-pane {
             width: 200px;
             height: calc(100vh - 60px); /* Adjust according to header height */
-            background-color: #f4f4f4;
+            background-color: #d8e6e0;
             position: fixed;
             top: 60px; /* Adjust according to header height */
             left: 0;
@@ -44,16 +44,7 @@
             margin-top: 100px;
             margin-left: 250px; /* Adjust according to navi pane width */
             padding: 20px;
-        }
-
-        .card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
+        }   
         .welcome-message {
             font-size: 24px;
             margin-bottom: 20px;
@@ -80,6 +71,101 @@
         }
         .match-info {
             margin: 5px 0;
+        }
+        .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+        gap: 10px; /* Add spacing between items */
+        }
+        .card-match {
+            width: 350px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .fare {
+            background-color: #ffd700;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .info-section {
+            margin-top: 15px;
+        }
+
+        
+        .car-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .car-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .driver-details {
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .rating {
+            display: inline-block;
+            background-color: #e5f7e5;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .action-btn {
+            width: 30%;
+            padding: 10px 0;
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .call-btn {
+            background-color: #ffc107;
+            color: white;
+        }
+
+        .text-btn {
+            background-color: #ffeb3b;
+            color: black;
+        }
+
+        .cancel-btn {
+            background-color: #f44336;
+            color: white;
         }
     </style>
     </style>
@@ -114,21 +200,62 @@
         {% else %}
             <p>Hello, Guest!</p>
         {% endif %}
+        <p>Here are people who match you</p>
+    <div class="grid-container">
+    <div class="card-match">
+        <div class="top-section">
+            <div>
+                <span class="fare">CARD</span>
+                <span class="price">20.00 SGD</span>
+            </div>
+        </div>
 
-        <h1>The User ID {{session['MATCH_TEST']}}</h1>
-          
+        <div class="info-section">
+            <div class="car-info">
+                <img src="https://via.placeholder.com/50" alt="Driver Image">
+                <div class="driver-details">
+                    <p><strong>{{session['MATCH_USER_IDS']}}</strong></p>
+                    <p>WHITE • TOYOTA CAMRY</p>
+                    <p>{{session['NAME_TEST']}} ⭐ 5.0</p>
+                    <span class="rating">{{session['MATCH_DAYS']}}</span>
+                </div>
+            </div>
+        </div>
 
-        <div class="card">
-            <h2>Matches</h2>
-            <p class="no-match-msg">There are no matches at the moment.</p>
+        <div class="actions">
+            <button class="action-btn call-btn">Call</button>
+            <a href="{{ url_for('conversation') }}" class="action-btn call-btn">Text</a>
+            <button class="action-btn cancel-btn">Cancel</button>
+        </div> 
+        </div>   
+
+    <div class="card-match">
+            <div class="top-section">
+                <div>
+                    <span class="fare">CARD</span>
+                    <span class="price">20.00 SGD</span>
+                </div>
+    </div>
+    <div class="info-section2">
+        <div class="car-info">
+            <img src="https://via.placeholder.com/50" alt="Driver Image">
+            <div class="driver-details">
+                <p><strong>{{ session['MATCH_TEST2']}}
+                </strong></p>
+                <p>WHITE • TOYOTA CAMRY</p>
+                <p>{{session['NAME_TEST2']}} ⭐ 5.0</p>
+                <span class="rating">{{session['MATCH_DAYS']}}</span>
+            </div>
         </div>
     </div>
-    <h1>User Matches</h1>
-    <div id="matches" class="match-container">
-        <!-- Match boxes will be inserted here -->
-    </div>
 
-   
+    <div class="actions">
+        <button class="action-btn call-btn">Call</button>
+        <a href="{{ url_for('conversation') }}" class="action-btn call-btn">Text</a>
+        <button class="action-btn cancel-btn">Cancel</button>
+    </div>
+</div>
+</div>
 
     <!-- Footer Section -->
     <footer>

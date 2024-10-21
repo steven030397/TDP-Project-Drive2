@@ -92,6 +92,15 @@
             gap: 20px; /* Space between cards */
         }
 
+        .dashboard-card {
+            background-color: #eeebeb;
+            border-radius: 20px;
+            box-shadow: 0px s4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            flex: 1;
+            width: 100%;
+        }
 
         .impact-card {
             background-color: #e0f7e4;
@@ -146,6 +155,39 @@
         .impact-footer a i {
             margin-left: 5px;
         }
+     
+        .profile-card {
+            display: relative;
+            align-items: center;
+            padding: 3px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .profile-card img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+        }
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .profile-details h3 {
+            margin: 3px;
+            font-size: 18px;
+        }
+        .profile-details p {
+            margin: 5px 0;
+            color: gray;
+            font-size: 14px;
+        }
+        .status {
+            color: gray;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -169,27 +211,42 @@
         <a href="{{ url_for('settings') }}">Settings</a>
     </div>
 
-    <div class="main-container">
-        <!-- Left Container -->
+     <div class="main-container">
+        <div class="dashboard-card">
         <div class="left-container">
+
+            <div class="profile-card">
+                <img src="https://via.placeholder.com/60" alt="Profile Image">
+                <div class="profile-details">
+                    <h3>Patrick Kennedy</h3>
+                    <p>patrick@gmail.com</p>
+                    <div class="status">
+                        <span>Owner: $67,600</span> <br>
+                       
+                    </div>
+                </div>
+            </div>
             <h3>Quick Summary</h3>
             <p><strong>Total Trips:</strong> 150</p>
             <p><strong>Saved Fuel:</strong> 1,234 liters</p>
             <p><strong>CO2 Reduced:</strong> 2,500 kg</p>
-            <p><a href="#">View more details...</a></p>
+            
+        </div>
         </div>
 
         <!-- Route Details -->
+        <div class="impact-card">
         <div class="route-details">
             <h2>Your Route Details</h2>
             <p><strong>Home location:</strong> 123 Random Street, Melbourne</p>
             <p><strong>Destination:</strong> 321 Office Street, Melbourne</p>
             <p><strong>Average Travel Distance:</strong> 15 km</p>
-    
+            
             <div class="route-stats">
                 <p><strong>Fuel Savings:</strong> $50.35 per week</p>
                 <p><strong>CO2 Reduction:</strong> 200 cm³</p>
             </div>
+        </div>
         </div>
   <!-- Impact Cards Section (Aside) -->
   <aside class="impact-aside">
@@ -209,7 +266,7 @@
 </aside>
     </div>
       
-
+    
 
     <!-- Footer Section -->
     <footer>
