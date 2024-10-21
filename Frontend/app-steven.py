@@ -58,8 +58,8 @@ def login():
             user_id, hashed_password = user # unpacking user, assigning both values to tuples values
 
             # Verify the password
-            #####if check_password_hash(hashed_password, password):
             if True:
+            #if check_password_hash(hashed_password, password):
                 # Password is correct, log the user in
                 session['user_id'] = user_id
                 session['email'] = email
@@ -299,13 +299,13 @@ def credentials():
             # Insert new user data into the MySQL database
             has_car = bool(session.get('vehicles')) and session.get('vehicles') != 'No vehicle data found'
             cursor.execute("""
-                INSERT INTO users (username, password, email, first_name, middle_name, last_name, date_of_birth, gender, phone_number, address, state, driver_license_number, has_car)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO users (username, password, email, first_name, middle_name, last_name, date_of_birth, gender, phone_number, address, state, driver_license_number, has_car, address_latitude, address_longitude)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """, (
                 session['username'], hashed_password, session['email'], session['first_name'],
                 session['middle_name'], session['last_name'], session['dob'], session['gender'],
                 session['phone'], session['address'], session['state'], session['driver_license'],
-                has_car
+                has_car, session['home_lat'], session['home_long'] 
             ))
             print("User data inserted")
 
@@ -382,30 +382,10 @@ def logout():
 
 
 
-
-
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/home' ,methods=['GET', 'POST'])
 def home():
-    conn = mysql.connector.connect(
-            host = "db4free.net",
-            port="3306",
-            user="steven3397",
-            password = "pass123word", 
-            database="drive2_db")
-    cursor = conn.cursor()
 
-
-    my_id = session["user_id"]
-    cursor.execute("SELECT user_id_person2 FROM matching_data WHERE user_id_person1 = %s", (my_id, ))
-    id_of_your_match = cursor.fetchall()
-
-    
-    session["MATCH_TEST"] = id_of_your_match
-
-
-    return render_template("home.html")
-
-
+    return render_template("home.html") 
 
 @app.route('/conversation' ,methods=['GET', 'POST'])
 def conversation():
@@ -418,6 +398,20 @@ def settings():
 @app.route('/dashboard' ,methods=['GET', 'POST'])
 def dashboard():
     return render_template("dashboard.html") 
+
+
+
+@app.route('/admin' ,methods=['GET', 'POST'])
+def admin():
+    return render_template("admin.html") 
+
+@app.route('/admin2' ,methods=['GET', 'POST'])
+def admin2():
+    return render_template("admin2.html") 
+
+@app.route('/admin3' ,methods=['GET', 'POST'])
+def admin3():
+    return render_template("admin3.html") 
 
 if __name__ == "__main__": # __name__ is a special built-in Python variable
     app.run(debug = True)

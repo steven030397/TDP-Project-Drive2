@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='icons/favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon/favicon-16x16.png') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - DRIVE2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .admin-pane {
+            display: flex; /* Arrange items horizontally */
+            justify-content: space-around; /* Distribute space evenly between items */
+        }
+
+        .admin-pane a {
+            display: inline-block; /* Allows items to sit next to each other horizontally */
+            padding: 10px 20px; /* Adds padding for more clickable space */
+            text-decoration: none;
+            color: #ffffff;
+            border-radius: 5px;
+            margin-right: 10px; /* Adds some space between each button */
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .admin-pane a.selected {
+            background-color: #ff5733;
+            color: white;
+        }
+
+        .admin-pane a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        /* Remove margin from the last item to avoid extra spacing */
+        .admin-pane a:last-child {
+            margin-right: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <header>
+        <div class="topbar">
+            <div class="logo">
+                <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png') }}" alt="DRIVE2 Logo"></a>
+            </div>
+            <nav>
+                <a href="{{ url_for('logout') }}"><button class="nav-button">Log Out</button></a>
+            </nav>
+        </div>
+    </header>
+
+    <h1>PUSH SPACE</h1>
+    <div class="admin-pane">
+        <a href="{{ url_for('admin3') }}">User statistics</a>
+        <a href="{{ url_for('admin2') }}" class="selected">Match statistics</a>
+        <a href="{{ url_for('admin') }}">Route statistics</a>
+    </div>
+    <iframe src="https://prod-apsoutheast-a.online.tableau.com/t/steven030397-4b79728643/views/Matchtable1/MatchQuality?:origin=card_share_link&:embed=y" width="800" height="200"></iframe>
+    <iframe src="https://prod-apsoutheast-a.online.tableau.com/t/steven030397-4b79728643/views/Matchtable1/locationdistance?:origin=card_share_link&:embed=y" width="800" height="600"></iframe>
+    <iframe src="https://prod-apsoutheast-a.online.tableau.com/t/steven030397-4b79728643/views/Matchtable1/Matchday?:origin=card_share_link&:embed=y" width="800" height="600"></iframe>
+    
+    
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 DRIVE2. All rights reserved.</p>
+    </footer>
+</body>
+</html>
