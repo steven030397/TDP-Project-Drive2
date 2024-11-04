@@ -173,7 +173,8 @@
     <header>
         <div class="topbar">
             <div class="logo">
-                <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/D2.png') }}" alt="DRIVE2 Logo"></a>
+                <!-- <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/D2.png') }}" alt="DRIVE2 Logo"></a> -->
+                <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/Screenshot_2024-08-21_021632-removebg-preview.png') }}" alt="DRIVE2 Logo"></a>
             </div>
             <nav>
                 <a href="{{ url_for('logout') }}"><button class="nav-button">Log Out</button></a>
@@ -191,8 +192,10 @@
 
     <!-- User List -->
     <div class="user-list">
-        <div class="selected">{{session['NAME_TEST']}}</div>
-        <div><a href="{{ url_for('conversation') }}">{{session['NAME_TEST2']}}</a></div>
+        <!-- <div class="selected">{{session['NAME_TEST']}}</div>
+        <div><a href="{{ url_for('conversation') }}">{{session['NAME_TEST2']}}</a></div> -->
+        <div class="selected">Jon Doe</div>
+        <div><a href="{{ url_for('conversation') }}">Steven Chin</a></div>
     </div>
 
     <!-- Chat Window -->
@@ -201,7 +204,7 @@
         <div id="messages" class="chat-content">
             <div class="message">
                 <div class="avatar"></div>
-                <div class="text">Hello, Alice!</div>
+                <div class="text">Hello, Bradon!</div>
             </div>
             <div class="message self">
                 <div class="text">Hi there! How are you?</div>

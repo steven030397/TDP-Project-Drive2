@@ -202,7 +202,9 @@
         {% endif %}
         <p>Here are people who match you</p>
     <div class="grid-container">
-    <div class="card-match">
+    
+    {%for i in range(0, 5)%}
+        <div class="card-match">
         <div class="top-section">
             <div>
                 <span class="fare">CARD</span>
@@ -214,10 +216,13 @@
             <div class="car-info">
                 <img src="https://via.placeholder.com/50" alt="Driver Image">
                 <div class="driver-details">
-                    <p><strong>{{session['MATCH_USER_IDS']}}</strong></p>
+                    <!-- <p><strong>{{session['MATCH_USER_IDS']}}</strong></p> -->
+                    <p><strong>Jon Doe</strong></p>
                     <p>WHITE • TOYOTA CAMRY</p>
-                    <p>{{session['NAME_TEST']}} ⭐ 5.0</p>
-                    <span class="rating">{{session['MATCH_DAYS']}}</span>
+                    <!-- <p>{{session['NAME_TEST']}} ⭐ 5.0</p> -->
+                    <p>Rating: ⭐ 5.0</p>
+                    <!-- <span class="rating">{{session['MATCH_DAYS']}}</span> -->
+                    <span class="rating">Monday</span>
                 </div>
             </div>
         </div>
@@ -228,6 +233,7 @@
             <button class="action-btn cancel-btn">Cancel</button>
         </div> 
         </div>   
+    {%endfor%}
 
     <div class="card-match">
             <div class="top-section">
@@ -240,11 +246,13 @@
         <div class="car-info">
             <img src="https://via.placeholder.com/50" alt="Driver Image">
             <div class="driver-details">
-                <p><strong>{{ session['MATCH_TEST2']}}
-                </strong></p>
+                <!-- <p><strong>{{ session['MATCH_TEST2']}}</strong></p> -->
+                <p><strong>Steven Chin</strong></p>
                 <p>WHITE • TOYOTA CAMRY</p>
-                <p>{{session['NAME_TEST2']}} ⭐ 5.0</p>
-                <span class="rating">{{session['MATCH_DAYS']}}</span>
+                <!-- <p>{{session['NAME_TEST2']}} ⭐ 5.0</p> -->
+                <p>Rating ⭐ 5.0</p>
+                <!-- <span class="rating">{{session['MATCH_DAYS']}}</span> -->
+                <span class="rating">Wednesday</span>
             </div>
         </div>
     </div>
